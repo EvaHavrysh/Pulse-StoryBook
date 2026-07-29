@@ -1,0 +1,87 @@
+/* Switch Styles */
+.pulse-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.95rem;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.pulse-switch--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Hide native checkbox input but keep accessible */
+.pulse-switch__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Switch Wrapper and Track */
+.pulse-switch__wrapper {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.pulse-switch__track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e4e4e7; /* Neutral 200 */
+  border-radius: 999px;
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Toggle Thumb */
+.pulse-switch__thumb {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Active/Selected States */
+.pulse-switch__input:checked + .pulse-switch__track {
+  background-color: #549410; /* Brand green */
+}
+
+.pulse-switch__input:checked + .pulse-switch__track .pulse-switch__thumb {
+  transform: translateX(20px);
+}
+
+/* Focus Indicator */
+.pulse-switch__input:focus-visible + .pulse-switch__track {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #549410, inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Label Styling */
+.pulse-switch__label {
+  color: #18181b;
+  font-weight: 500;
+}
+
+.pulse-switch--disabled .pulse-switch__label {
+  color: #71717a;
+}

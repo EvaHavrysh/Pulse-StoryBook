@@ -1,0 +1,46 @@
+/* Typography Component Styles */
+.pulse-typography {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  color: #18181b; /* Default text color: Zinc 900 */
+}
+
+/* Heading (32px) */
+.pulse-typography--heading {
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* Subheading (18px) */
+.pulse-typography--subheading {
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* Impact (16px) */
+.pulse-typography--impact {
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Body (14px) */
+.pulse-typography--body {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* Subtext (12px) */
+.pulse-typography--subtext {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #71717a; /* Neutral muted color: Zinc 500 */
+}
