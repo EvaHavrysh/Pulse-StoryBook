@@ -11,25 +11,35 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'outline', 'text'],
-      description: 'The visual variant of the button.',
+      options: ['primary', 'secondary', 'tertiary'],
+      description: 'Visual variant of the button.',
+    },
+    state: {
+      control: 'select',
+      options: ['normal', 'hover', 'active', 'disabled'],
+      description: 'Simulated visual state of the button.',
+    },
+    icon: {
+      control: 'select',
+      options: ['none', 'left', 'right'],
+      description: 'Icon positioning: left, right, or none.',
     },
     size: {
       control: 'select',
       options: ['small', 'medium', 'large'],
-      description: 'The size of the button.',
+      description: 'Size of the button.',
     },
     fullWidth: {
       control: 'boolean',
-      description: 'Whether the button should take up the full width of its container.',
+      description: 'Take up full width of container.',
     },
     loading: {
       control: 'boolean',
-      description: 'Whether the button is in a loading state.',
+      description: 'Display loading spinner.',
     },
     disabled: {
       control: 'boolean',
-      description: 'Whether the button is disabled.',
+      description: 'Disable the button.',
     },
     onClick: { action: 'clicked' },
   },
@@ -38,121 +48,137 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
+/* Default Primary Button */
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    children: 'Primary Button',
+    children: 'Button',
   },
 };
 
+/* Secondary Button */
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
-    children: 'Secondary Button',
+    children: 'Button',
   },
 };
 
-export const Outline: Story = {
+/* Tertiary Button */
+export const Tertiary: Story = {
   args: {
-    variant: 'outline',
-    children: 'Outline Button',
+    variant: 'tertiary',
+    children: 'Button',
   },
 };
 
-export const Text: Story = {
+/* States */
+export const HoverState: Story = {
   args: {
-    variant: 'text',
-    children: 'Text Button',
+    variant: 'primary',
+    state: 'hover',
+    children: 'Button',
   },
 };
 
-export const Large: Story = {
+export const ActiveState: Story = {
   args: {
-    size: 'large',
-    children: 'Large Button',
+    variant: 'primary',
+    state: 'active',
+    children: 'Button',
   },
 };
 
-export const Medium: Story = {
+export const DisabledState: Story = {
   args: {
-    size: 'medium',
-    children: 'Medium Button',
+    variant: 'primary',
+    state: 'disabled',
+    children: 'Button',
   },
 };
 
-export const Small: Story = {
-  args: {
-    size: 'small',
-    children: 'Small Button',
-  },
-};
-
-export const Loading: Story = {
-  args: {
-    loading: true,
-    children: 'Loading...',
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-    children: 'Disabled Button',
-  },
-};
-
-export const FullWidth: Story = {
-  args: {
-    fullWidth: true,
-    children: 'Full Width Button',
-  },
-  decorators: [
-    (Story) => (
-      <div style={{ width: '400px', border: '1px dashed #ccc', padding: '20px', borderRadius: '8px' }}>
-        <Story />
-      </div>
-    ),
-  ],
-};
-
+/* Icons */
 export const WithLeftIcon: Story = {
   args: {
-    iconLeft: (
-      <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M5 12h14" />
-        <path d="M12 5l7 7-7 7" />
-      </svg>
-    ),
-    children: 'Next Step',
+    variant: 'primary',
+    icon: 'left',
+    children: 'Button',
   },
 };
 
 export const WithRightIcon: Story = {
   args: {
-    iconRight: (
-      <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M12 5v14" />
-        <path d="M5 12h14" />
-      </svg>
-    ),
-    children: 'Add Item',
+    variant: 'primary',
+    icon: 'right',
+    children: 'Button',
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    variant: 'primary',
+    loading: true,
+    children: 'Button',
+  },
+};
+
+/* Full Matrix Gallery matching Figma Spec */
+export const AllVariantsAndStates: Story = {
+  render: () => {
+    const variants = ['primary', 'secondary', 'tertiary'] as const;
+    const variantTitles = {
+      primary: '❖ Button Primary',
+      secondary: '❖ Button Secondary',
+      tertiary: '❖ Button Tertiary',
+    };
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', padding: '24px', fontFamily: 'sans-serif' }}>
+        {variants.map((v) => (
+          <div key={v} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <h3 style={{ margin: 0, color: '#7c3aed', fontSize: '15px', fontWeight: 600 }}>
+              {variantTitles[v]}
+            </h3>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '24px',
+                padding: '24px 32px',
+                border: '1.5px dashed #a78bfa',
+                borderRadius: '16px',
+                backgroundColor: '#ffffff',
+                flexWrap: 'wrap',
+              }}
+            >
+              {/* Normal */}
+              <Button variant={v} state="normal">
+                Button
+              </Button>
+              {/* Hover */}
+              <Button variant={v} state="hover">
+                Button
+              </Button>
+              {/* Active */}
+              <Button variant={v} state="active">
+                Button
+              </Button>
+              {/* Disabled */}
+              <Button variant={v} state="disabled">
+                Button
+              </Button>
+              {/* Left Icon */}
+              <Button variant={v} icon="left">
+                Button
+              </Button>
+              {/* Right Icon */}
+              <Button variant={v} icon="right">
+                Button
+              </Button>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
   },
 };

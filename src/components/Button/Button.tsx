@@ -1,66 +1,129 @@
 import React, { forwardRef } from 'react';
-import { Typography } from '../Typography/Typography';
 import './Button.css';
+
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
+export type ButtonState = 'normal' | 'hover' | 'active' | 'disabled';
+export type ButtonIconPosition = 'left' | 'right' | 'none';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * The visual variant of the button.
+   * Visual variant of the button: 'primary' | 'secondary' | 'tertiary'.
    */
-  variant?: 'primary' | 'secondary' | 'outline' | 'text';
+  variant?: ButtonVariant;
   /**
-   * The size of the button.
+   * Visual state of the button: 'normal' | 'hover' | 'active' | 'disabled'.
+   * Can be used to simulate/force specific states for previews or testing.
    */
-  size?: 'small' | 'medium' | 'large';
+  state?: ButtonState;
   /**
-   * Whether the button should take up the full width of its container.
+   * Position of the icon: 'left' | 'right' | 'none'.
    */
-  fullWidth?: boolean;
+  icon?: ButtonIconPosition;
   /**
-   * Whether the button is in a loading state. Displays a spinner and disables interaction.
-   */
-  loading?: boolean;
-  /**
-   * Optional icon to render on the left side of the text.
+   * Custom element for left icon. Defaults to chevron left '<' when icon='left'.
    */
   iconLeft?: React.ReactNode;
   /**
-   * Optional icon to render on the right side of the text.
+   * Custom element for right icon. Defaults to chevron right '>' when icon='right'.
    */
   iconRight?: React.ReactNode;
+  /**
+   * Size of the button: 'small' | 'medium' | 'large'.
+   */
+  size?: 'small' | 'medium' | 'large';
+  /**
+   * Full width container mode.
+   */
+  fullWidth?: boolean;
+  /**
+   * Loading state with animated spinner.
+   */
+  loading?: boolean;
 }
+
+const DefaultChevronLeft = () => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M10 13L5 8l5-5" />
+  </svg>
+);
+
+const DefaultChevronRight = () => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M6 3l5 5-5 5" />
+  </svg>
+);
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       className = '',
       variant = 'primary',
+      state = 'normal',
+      icon = 'none',
+      iconLeft,
+      iconRight,
       size = 'medium',
       fullWidth = false,
       loading = false,
       disabled = false,
-      iconLeft,
-      iconRight,
-      children,
+      children = 'Button',
       type = 'button',
       ...props
     },
     ref
   ) => {
-    const isPending = loading;
-    const isBtnDisabled = disabled || loading;
+    const isBtnDisabled = disabled || state === 'disabled' || loading;
+
+    // Resolve icon rendering based on `icon` prop or custom icon nodes
+    const effectiveIconPos =
+      icon !== 'none'
+        ? icon
+        : iconLeft
+        ? 'left'
+        : iconRight
+        ? 'right'
+        : 'none';
+
+    const renderLeftIcon =
+      !loading &&
+      effectiveIconPos === 'left' &&
+      (iconLeft || <DefaultChevronLeft />);
+
+    const renderRightIcon =
+      !loading &&
+      effectiveIconPos === 'right' &&
+      (iconRight || <DefaultChevronRight />);
 
     return (
       <button
         ref={ref}
         type={type}
         disabled={isBtnDisabled}
-        className={`pulse-button pulse-button--${variant} pulse-button--${size} ${
+        className={`pulse-button pulse-button--${variant} pulse-button--state-${state} pulse-button--${size} ${
           fullWidth ? 'pulse-button--full-width' : ''
-        } ${isPending ? 'pulse-button--loading' : ''} ${className}`}
+        } ${loading ? 'pulse-button--loading' : ''} ${className}`}
         aria-busy={loading}
         {...props}
       >
-        {isPending && (
+        {loading && (
           <span className="pulse-button__spinner" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle
@@ -85,21 +148,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           </span>
         )}
 
-        {!isPending && iconLeft && (
+        {renderLeftIcon && (
           <span className="pulse-button__icon pulse-button__icon--left" aria-hidden="true">
-            {iconLeft}
+            {renderLeftIcon}
           </span>
         )}
 
-        <span className="pulse-button__content">
-          <Typography variant="body" as="span" color="inherit" fontWeight="inherit">
-            {children}
-          </Typography>
-        </span>
+        <span className="pulse-button__content">{children}</span>
 
-        {!isPending && iconRight && (
+        {renderRightIcon && (
           <span className="pulse-button__icon pulse-button__icon--right" aria-hidden="true">
-            {iconRight}
+            {renderRightIcon}
           </span>
         )}
       </button>
