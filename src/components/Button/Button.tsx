@@ -1,13 +1,13 @@
 import React, { forwardRef } from 'react';
 import './Button.css';
 
-export type ButtonVariant = 'primary';
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
 export type ButtonState = 'normal' | 'hover' | 'active' | 'disabled';
 export type ButtonIconPosition = 'left' | 'right' | 'none';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * Visual variant of the button. Starts with 'primary'.
+   * Visual variant of the button: 'primary' | 'secondary' | 'tertiary'.
    */
   variant?: ButtonVariant;
   /**
@@ -44,8 +44,8 @@ const DefaultChevronLeft = () => (
     fill="none"
     stroke="currentColor"
     strokeWidth="2.5"
-    strokeLinecap="square"
-    strokeLinejoin="miter"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
     <path d="M10 13L5 8l5-5" />
   </svg>
@@ -59,8 +59,8 @@ const DefaultChevronRight = () => (
     fill="none"
     stroke="currentColor"
     strokeWidth="2.5"
-    strokeLinecap="square"
-    strokeLinejoin="miter"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
     <path d="M6 3l5 5-5 5" />
   </svg>

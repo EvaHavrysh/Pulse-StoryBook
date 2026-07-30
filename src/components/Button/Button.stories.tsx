@@ -11,8 +11,8 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary'],
-      description: 'Visual variant: primary.',
+      options: ['primary', 'secondary', 'tertiary'],
+      description: 'Visual variant: primary, secondary, or tertiary.',
     },
     state: {
       control: 'select',
@@ -40,10 +40,11 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-/* Button Primary Stories */
-
+/* ==================================================== */
+/* 1. BUTTON PRIMARY                                    */
+/* ==================================================== */
 export const PrimaryDefault: Story = {
-  name: '1. Primary / Default',
+  name: 'Primary / Default',
   args: {
     variant: 'primary',
     state: 'normal',
@@ -52,7 +53,7 @@ export const PrimaryDefault: Story = {
 };
 
 export const PrimaryHover: Story = {
-  name: '2. Primary / Hover',
+  name: 'Primary / Hover',
   args: {
     variant: 'primary',
     state: 'hover',
@@ -61,7 +62,7 @@ export const PrimaryHover: Story = {
 };
 
 export const PrimaryActive: Story = {
-  name: '3. Primary / Active (Pressed)',
+  name: 'Primary / Active (Pressed)',
   args: {
     variant: 'primary',
     state: 'active',
@@ -70,7 +71,7 @@ export const PrimaryActive: Story = {
 };
 
 export const PrimaryDisabled: Story = {
-  name: '4. Primary / Disabled',
+  name: 'Primary / Disabled',
   args: {
     variant: 'primary',
     state: 'disabled',
@@ -79,7 +80,7 @@ export const PrimaryDisabled: Story = {
 };
 
 export const PrimaryWithLeftIcon: Story = {
-  name: '5. Primary / Left Icon (<)',
+  name: 'Primary / Left Icon (<)',
   args: {
     variant: 'primary',
     icon: 'left',
@@ -88,9 +89,123 @@ export const PrimaryWithLeftIcon: Story = {
 };
 
 export const PrimaryWithRightIcon: Story = {
-  name: '6. Primary / Right Icon (>)',
+  name: 'Primary / Right Icon (>)',
   args: {
     variant: 'primary',
+    icon: 'right',
+    children: 'Button',
+  },
+};
+
+/* ==================================================== */
+/* 2. BUTTON SECONDARY                                  */
+/* ==================================================== */
+export const SecondaryDefault: Story = {
+  name: 'Secondary / Default (Outlined)',
+  args: {
+    variant: 'secondary',
+    state: 'normal',
+    children: 'Button',
+  },
+};
+
+export const SecondaryHover: Story = {
+  name: 'Secondary / Hover',
+  args: {
+    variant: 'secondary',
+    state: 'hover',
+    children: 'Button',
+  },
+};
+
+export const SecondaryActive: Story = {
+  name: 'Secondary / Active (Pressed 4px Shrink)',
+  args: {
+    variant: 'secondary',
+    state: 'active',
+    children: 'Button',
+  },
+};
+
+export const SecondaryDisabled: Story = {
+  name: 'Secondary / Disabled',
+  args: {
+    variant: 'secondary',
+    state: 'disabled',
+    children: 'Button',
+  },
+};
+
+export const SecondaryWithLeftIcon: Story = {
+  name: 'Secondary / Left Icon (<)',
+  args: {
+    variant: 'secondary',
+    icon: 'left',
+    children: 'Button',
+  },
+};
+
+export const SecondaryWithRightIcon: Story = {
+  name: 'Secondary / Right Icon (>)',
+  args: {
+    variant: 'secondary',
+    icon: 'right',
+    children: 'Button',
+  },
+};
+
+/* ==================================================== */
+/* 3. BUTTON TERTIARY                                   */
+/* ==================================================== */
+export const TertiaryDefault: Story = {
+  name: 'Tertiary / Default (Text)',
+  args: {
+    variant: 'tertiary',
+    state: 'normal',
+    children: 'Button',
+  },
+};
+
+export const TertiaryHover: Story = {
+  name: 'Tertiary / Hover',
+  args: {
+    variant: 'tertiary',
+    state: 'hover',
+    children: 'Button',
+  },
+};
+
+export const TertiaryActive: Story = {
+  name: 'Tertiary / Active (Darker Text & Background)',
+  args: {
+    variant: 'tertiary',
+    state: 'active',
+    children: 'Button',
+  },
+};
+
+export const TertiaryDisabled: Story = {
+  name: 'Tertiary / Disabled',
+  args: {
+    variant: 'tertiary',
+    state: 'disabled',
+    children: 'Button',
+  },
+};
+
+export const TertiaryWithLeftIcon: Story = {
+  name: 'Tertiary / Left Icon (<)',
+  args: {
+    variant: 'tertiary',
+    icon: 'left',
+    children: 'Button',
+  },
+};
+
+export const TertiaryWithRightIcon: Story = {
+  name: 'Tertiary / Right Icon (>)',
+  args: {
+    variant: 'tertiary',
     icon: 'right',
     children: 'Button',
   },
