@@ -1,38 +1,28 @@
-/* Pulse Button Design Tokens - Exact Specification */
+/* Brutalist Design System Tokens - Sharp Corners (border-radius: 0) */
 :root {
-  /* Green Palette */
   --pulse-btn-green-primary: #4f8c09;
-  --pulse-btn-green-hover-bg: #6ab414;
+  --pulse-btn-green-hover: #6ab414;
   --pulse-btn-green-shadow: #42740c;
-  --pulse-btn-green-active-bg: #3f7007;
-  
-  --pulse-btn-secondary-hover-bg: #c2e591;
-  --pulse-btn-secondary-active-bg: #b6dc83;
-  
-  --pulse-btn-tertiary-hover-bg: #e3f2d2;
-  --pulse-btn-tertiary-active-bg: #d5e8c1;
-  --pulse-btn-tertiary-active-color: #3f7007;
+  --pulse-btn-green-active: #3f7007;
 
   --pulse-btn-disabled-bg: #d8d8d8;
   --pulse-btn-disabled-color: #adadad;
-  --pulse-btn-disabled-border: #d8d8d8;
 
-  --pulse-btn-radius: 16px;
   --pulse-btn-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-  --pulse-btn-transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease, transform 0.15s cubic-bezier(0.2, 0, 0, 1);
+  --pulse-btn-transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s cubic-bezier(0.2, 0, 0, 1);
 }
 
-/* Base Styles */
+/* Base Button - Strict Brutalist (Sharp Corners) */
 .pulse-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: var(--pulse-btn-font);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem;
   line-height: 1.2;
-  border-radius: var(--pulse-btn-radius);
-  border: 1.5px solid transparent;
+  border-radius: 0px !important;
+  border: none;
   cursor: pointer;
   white-space: nowrap;
   user-select: none;
@@ -50,7 +40,6 @@
   height: 36px;
   padding: 0 16px;
   font-size: 0.875rem;
-  border-radius: 12px;
   gap: 6px;
 }
 
@@ -58,7 +47,6 @@
   height: 44px;
   padding: 0 24px;
   font-size: 1rem;
-  border-radius: 16px;
   gap: 8px;
 }
 
@@ -66,7 +54,6 @@
   height: 52px;
   padding: 0 30px;
   font-size: 1.125rem;
-  border-radius: 20px;
   gap: 10px;
 }
 
@@ -76,179 +63,54 @@
   width: 100%;
 }
 
-/* Focus State */
+/* Accessibility Focus */
 .pulse-button:focus-visible {
-  outline: 2px solid var(--pulse-btn-green-primary);
+  outline: 2px solid #000000;
   outline-offset: 2px;
 }
 
 /* ==================================================== */
-/* 1. BUTTON PRIMARY (First Row)                         */
+/* BUTTON PRIMARY (Brutalist Sharp Corners - Step 1)   */
 /* ==================================================== */
-/* Default: Classic green fill (#4f8c09) with clean white text and 3D bottom shadow (#42740c) */
+
+/* 1. Primary / Default: Classic green (#4f8c09), sharp 0px radius, clean white text, hard 3D shadow (#42740c) */
 .pulse-button--primary {
   background-color: var(--pulse-btn-green-primary);
   color: #ffffff;
-  border-color: transparent;
+  border-radius: 0px !important;
   box-shadow: 0 4px 0 0 var(--pulse-btn-green-shadow);
   transform: translateY(0);
 }
 
-/* Hover: Slightly lighter green (#6ab414) with white text, no translateY shift (keeping shadow) */
+/* 2. Primary / Hover: Slightly lighter green (#6ab414), sharp corners, white text, smooth transition */
 .pulse-button--primary:hover:not(:disabled),
 .pulse-button--primary.pulse-button--state-hover:not(:disabled) {
-  background-color: var(--pulse-btn-green-hover-bg);
+  background-color: var(--pulse-btn-green-hover);
   color: #ffffff;
-  border-color: transparent;
   box-shadow: 0 4px 0 0 var(--pulse-btn-green-shadow);
   transform: translateY(0);
 }
 
-/* Active (Pressed): Slightly darker green (#3f7007), bottom shadow completely removed (brutalist click) */
+/* 3. Primary / Active (Pressed): Slightly darker green (#3f7007), 3D shadow completely removed, translateY(2px) shift */
 .pulse-button--primary:active:not(:disabled),
 .pulse-button--primary.pulse-button--state-active:not(:disabled) {
-  background-color: var(--pulse-btn-green-active-bg);
+  background-color: var(--pulse-btn-green-active);
   color: #ffffff;
-  border-color: transparent;
   box-shadow: none !important;
   transform: translateY(2px);
 }
 
-/* Disabled: Neutral light gray fill (#d8d8d8) with muted text (#adadad) and no shadow */
+/* 4. Primary / Disabled: Neutral light gray (#d8d8d8), muted text (#adadad), no shadow, sharp 0px radius */
 .pulse-button--primary:disabled,
 .pulse-button--primary.pulse-button--state-disabled {
   background-color: var(--pulse-btn-disabled-bg);
   color: var(--pulse-btn-disabled-color);
-  border-color: transparent;
-  cursor: not-allowed;
   box-shadow: none !important;
   transform: none !important;
-}
-
-/* ==================================================== */
-/* 2. BUTTON SECONDARY (Second Row)                      */
-/* ==================================================== */
-/* Default: Outlined button by default */
-.pulse-button--secondary {
-  background-color: #ffffff;
-  border-color: var(--pulse-btn-green-primary);
-  color: var(--pulse-btn-green-primary);
-  box-shadow: none;
-  transform: scale(1);
-}
-
-/* Hover: Slightly darker light green filled background */
-.pulse-button--secondary:hover:not(:disabled),
-.pulse-button--secondary.pulse-button--state-hover:not(:disabled) {
-  background-color: var(--pulse-btn-secondary-hover-bg);
-  border-color: var(--pulse-btn-green-primary);
-  color: var(--pulse-btn-green-primary);
-  box-shadow: none;
-  transform: scale(1);
-}
-
-/* Active (Pressed): Scales down by 4 pixels in both width and height when pressed */
-.pulse-button--secondary:active:not(:disabled),
-.pulse-button--secondary.pulse-button--state-active:not(:disabled) {
-  background-color: var(--pulse-btn-secondary-active-bg);
-  border-color: var(--pulse-btn-green-primary);
-  color: var(--pulse-btn-green-primary);
-  box-shadow: none;
-  transform: scale(0.91);
-}
-
-/* Disabled: Inactive outlined state */
-.pulse-button--secondary:disabled,
-.pulse-button--secondary.pulse-button--state-disabled {
-  background-color: #ffffff;
-  border-color: var(--pulse-btn-disabled-border);
-  color: var(--pulse-btn-disabled-color);
   cursor: not-allowed;
-  box-shadow: none;
-  transform: none !important;
 }
 
-/* ==================================================== */
-/* 3. BUTTON TERTIARY (Third Row / Text Buttons)        */
-/* ==================================================== */
-/* Default: Text-only state */
-.pulse-button--tertiary {
-  background-color: transparent;
-  border-color: transparent;
-  color: var(--pulse-btn-green-primary);
-  box-shadow: none;
-  transform: none;
-}
-
-/* Hover: Background highlights with subtle color */
-.pulse-button--tertiary:hover:not(:disabled),
-.pulse-button--tertiary.pulse-button--state-hover:not(:disabled) {
-  background-color: var(--pulse-btn-tertiary-hover-bg);
-  border-color: transparent;
-  color: var(--pulse-btn-green-primary);
-  box-shadow: none;
-  transform: none;
-}
-
-/* Active (Pressed): Background and text color become slightly darker than hover state */
-.pulse-button--tertiary:active:not(:disabled),
-.pulse-button--tertiary.pulse-button--state-active:not(:disabled) {
-  background-color: var(--pulse-btn-tertiary-active-bg);
-  border-color: transparent;
-  color: var(--pulse-btn-tertiary-active-color);
-  box-shadow: none;
-  transform: none;
-}
-
-/* Disabled: Inactive text state */
-.pulse-button--tertiary:disabled,
-.pulse-button--tertiary.pulse-button--state-disabled {
-  background-color: transparent;
-  border-color: transparent;
-  color: var(--pulse-btn-disabled-color);
-  cursor: not-allowed;
-  box-shadow: none;
-  transform: none !important;
-}
-
-/* ==================================================== */
-/* SPINNER & ICON STYLING                               */
-/* ==================================================== */
-.pulse-button--loading {
-  cursor: wait;
-}
-
-.pulse-button__spinner {
-  display: inline-flex;
-  width: 1.25em;
-  height: 1.25em;
-  animation: pulse-spin 0.8s linear infinite;
-  flex-shrink: 0;
-}
-
-.pulse-button__spinner svg {
-  width: 100%;
-  height: 100%;
-}
-
-.pulse-button__spinner-track {
-  opacity: 0.25;
-}
-
-.pulse-button__spinner-head {
-  opacity: 0.9;
-  transform-origin: center;
-}
-
-@keyframes pulse-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
+/* Icons & Layout */
 .pulse-button__icon {
   display: inline-flex;
   align-items: center;
