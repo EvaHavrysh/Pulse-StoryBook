@@ -1,4 +1,4 @@
-/* Brutalist Design System Tokens - Sharp Corners (border-radius: 0) */
+/* Pulse Button Design Tokens */
 :root {
   --pulse-btn-green-primary: #4f8c09;
   --pulse-btn-green-hover: #6ab414;
@@ -8,11 +8,12 @@
   --pulse-btn-disabled-bg: #d8d8d8;
   --pulse-btn-disabled-color: #adadad;
 
+  --pulse-btn-radius: 16px;
   --pulse-btn-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
   --pulse-btn-transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s cubic-bezier(0.2, 0, 0, 1);
 }
 
-/* Base Button - Strict Brutalist (Sharp Corners) */
+/* Base Button */
 .pulse-button {
   display: inline-flex;
   align-items: center;
@@ -21,7 +22,7 @@
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.2;
-  border-radius: 0px !important;
+  border-radius: 16px;
   border: none;
   cursor: pointer;
   white-space: nowrap;
@@ -40,6 +41,7 @@
   height: 36px;
   padding: 0 16px;
   font-size: 0.875rem;
+  border-radius: 16px;
   gap: 6px;
 }
 
@@ -47,6 +49,7 @@
   height: 44px;
   padding: 0 24px;
   font-size: 1rem;
+  border-radius: 16px;
   gap: 8px;
 }
 
@@ -55,6 +58,7 @@
   padding: 0 32px;
   font-size: 1.125rem;
   font-weight: 700;
+  border-radius: 16px;
   gap: 12px;
   letter-spacing: 0.02em;
 }
@@ -72,41 +76,44 @@
 }
 
 /* ==================================================== */
-/* BUTTON PRIMARY (Brutalist Sharp Corners)             */
+/* BUTTON PRIMARY                                       */
 /* ==================================================== */
 
-/* 1. Primary / Default: Classic green (#4f8c09), sharp 0px radius, clean white text, hard 3D shadow (#42740c) */
+/* 1. Primary / Default: Classic green (#4f8c09), 16px radius, clean white text, 3D shadow (#42740c) */
 .pulse-button--primary {
   background-color: var(--pulse-btn-green-primary);
   color: #ffffff;
-  border-radius: 0px !important;
+  border-radius: 16px;
   box-shadow: 0 4px 0 0 var(--pulse-btn-green-shadow);
   transform: translateY(0);
 }
 
-/* 2. Primary / Hover: Slightly lighter green (#6ab414), sharp corners, white text, smooth transition */
+/* 2. Primary / Hover: Slightly lighter green (#6ab414), 16px radius, white text, smooth transition */
 .pulse-button--primary:hover:not(:disabled),
 .pulse-button--primary.pulse-button--state-hover:not(:disabled) {
   background-color: var(--pulse-btn-green-hover);
   color: #ffffff;
+  border-radius: 16px;
   box-shadow: 0 4px 0 0 var(--pulse-btn-green-shadow);
   transform: translateY(0);
 }
 
-/* 3. Primary / Active (Pressed): Slightly darker green (#3f7007), 3D shadow completely removed, translateY(2px) shift */
+/* 3. Primary / Active (Pressed): Slightly darker green (#3f7007), 3D shadow removed, translateY(2px) shift */
 .pulse-button--primary:active:not(:disabled),
 .pulse-button--primary.pulse-button--state-active:not(:disabled) {
   background-color: var(--pulse-btn-green-active);
   color: #ffffff;
+  border-radius: 16px;
   box-shadow: none !important;
   transform: translateY(2px);
 }
 
-/* 4. Primary / Disabled: Neutral light gray (#d8d8d8), muted text (#adadad), no shadow, sharp 0px radius */
+/* 4. Primary / Disabled: Neutral light gray (#d8d8d8), muted text (#adadad), no shadow, 16px radius */
 .pulse-button--primary:disabled,
 .pulse-button--primary.pulse-button--state-disabled {
   background-color: var(--pulse-btn-disabled-bg);
   color: var(--pulse-btn-disabled-color);
+  border-radius: 16px;
   box-shadow: none !important;
   transform: none !important;
   cursor: not-allowed;
