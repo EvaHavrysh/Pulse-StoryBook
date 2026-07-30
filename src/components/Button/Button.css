@@ -51,10 +51,12 @@
 }
 
 .pulse-button--large {
-  height: 52px;
-  padding: 0 30px;
+  height: 56px;
+  padding: 0 32px;
   font-size: 1.125rem;
-  gap: 10px;
+  font-weight: 700;
+  gap: 12px;
+  letter-spacing: 0.02em;
 }
 
 /* Full Width */
@@ -70,7 +72,7 @@
 }
 
 /* ==================================================== */
-/* BUTTON PRIMARY (Brutalist Sharp Corners - Step 1)   */
+/* BUTTON PRIMARY (Brutalist Sharp Corners)             */
 /* ==================================================== */
 
 /* 1. Primary / Default: Classic green (#4f8c09), sharp 0px radius, clean white text, hard 3D shadow (#42740c) */

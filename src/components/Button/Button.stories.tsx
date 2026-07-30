@@ -40,6 +40,24 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
+/* Prominent Extra Large Primary Story (Top of Section) */
+export const ProminentExtraLargePrimary: Story = {
+  name: '0. Prominent / Extra Large Primary',
+  args: {
+    variant: 'primary',
+    size: 'large',
+    fullWidth: true,
+    children: 'Prominent Extra Large Primary Button',
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ width: '420px', padding: '16px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
+
 /* Button Primary Stories */
 
 export const PrimaryDefault: Story = {
