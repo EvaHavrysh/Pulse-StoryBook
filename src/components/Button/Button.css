@@ -3,7 +3,7 @@
   /* Green Palette */
   --pulse-btn-green-primary: #4f8c09;
   --pulse-btn-green-hover-bg: #6ab414;
-  --pulse-btn-green-hover-shadow: #42740c;
+  --pulse-btn-green-shadow: #42740c;
   --pulse-btn-green-active-bg: #3f7007;
   
   --pulse-btn-secondary-hover-bg: #c2e591;
@@ -85,26 +85,26 @@
 /* ==================================================== */
 /* 1. BUTTON PRIMARY (First Row)                         */
 /* ==================================================== */
-/* Default: Default state matches reference design */
+/* Default: Classic green fill (#4f8c09) with clean white text and 3D bottom shadow (#42740c) */
 .pulse-button--primary {
   background-color: var(--pulse-btn-green-primary);
   color: #ffffff;
   border-color: transparent;
-  box-shadow: none;
+  box-shadow: 0 4px 0 0 var(--pulse-btn-green-shadow);
   transform: translateY(0);
 }
 
-/* Hover: Slightly lighter than default, with bottom 3D shadow */
+/* Hover: Slightly lighter green (#6ab414) with white text, no translateY shift (keeping shadow) */
 .pulse-button--primary:hover:not(:disabled),
 .pulse-button--primary.pulse-button--state-hover:not(:disabled) {
   background-color: var(--pulse-btn-green-hover-bg);
   color: #ffffff;
   border-color: transparent;
-  box-shadow: 0 4px 0 0 var(--pulse-btn-green-hover-shadow);
-  transform: translateY(-2px);
+  box-shadow: 0 4px 0 0 var(--pulse-btn-green-shadow);
+  transform: translateY(0);
 }
 
-/* Active (Pressed): Slightly darker, bottom shadow completely removed (brutalist click effect) */
+/* Active (Pressed): Slightly darker green (#3f7007), bottom shadow completely removed (brutalist click) */
 .pulse-button--primary:active:not(:disabled),
 .pulse-button--primary.pulse-button--state-active:not(:disabled) {
   background-color: var(--pulse-btn-green-active-bg);
@@ -114,7 +114,7 @@
   transform: translateY(2px);
 }
 
-/* Disabled: Inactive state (light gray) */
+/* Disabled: Neutral light gray fill (#d8d8d8) with muted text (#adadad) and no shadow */
 .pulse-button--primary:disabled,
 .pulse-button--primary.pulse-button--state-disabled {
   background-color: var(--pulse-btn-disabled-bg);
