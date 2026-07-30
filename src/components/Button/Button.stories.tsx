@@ -12,12 +12,12 @@ const meta: Meta<typeof Button> = {
     variant: {
       control: 'select',
       options: ['primary', 'secondary', 'tertiary'],
-      description: 'Visual variant of the button.',
+      description: 'Visual variant: primary, secondary, or tertiary.',
     },
     state: {
       control: 'select',
       options: ['normal', 'hover', 'active', 'disabled'],
-      description: 'Simulated visual state of the button.',
+      description: 'Simulated visual state for testing.',
     },
     icon: {
       control: 'select',
@@ -31,15 +31,15 @@ const meta: Meta<typeof Button> = {
     },
     fullWidth: {
       control: 'boolean',
-      description: 'Take up full width of container.',
+      description: 'Full width mode.',
     },
     loading: {
       control: 'boolean',
-      description: 'Display loading spinner.',
+      description: 'Loading state with spinner.',
     },
     disabled: {
       control: 'boolean',
-      description: 'Disable the button.',
+      description: 'Disabled state.',
     },
     onClick: { action: 'clicked' },
   },
@@ -48,32 +48,20 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-/* Default Primary Button */
-export const Primary: Story = {
+/* ==================================================== */
+/* 1. BUTTON PRIMARY STORIES                            */
+/* ==================================================== */
+export const PrimaryDefault: Story = {
+  name: 'Primary / Default',
   args: {
     variant: 'primary',
+    state: 'normal',
     children: 'Button',
   },
 };
 
-/* Secondary Button */
-export const Secondary: Story = {
-  args: {
-    variant: 'secondary',
-    children: 'Button',
-  },
-};
-
-/* Tertiary Button */
-export const Tertiary: Story = {
-  args: {
-    variant: 'tertiary',
-    children: 'Button',
-  },
-};
-
-/* States */
-export const HoverState: Story = {
+export const PrimaryHover: Story = {
+  name: 'Primary / Hover',
   args: {
     variant: 'primary',
     state: 'hover',
@@ -81,7 +69,8 @@ export const HoverState: Story = {
   },
 };
 
-export const ActiveState: Story = {
+export const PrimaryActive: Story = {
+  name: 'Primary / Active (Pressed)',
   args: {
     variant: 'primary',
     state: 'active',
@@ -89,7 +78,8 @@ export const ActiveState: Story = {
   },
 };
 
-export const DisabledState: Story = {
+export const PrimaryDisabled: Story = {
+  name: 'Primary / Disabled',
   args: {
     variant: 'primary',
     state: 'disabled',
@@ -97,8 +87,8 @@ export const DisabledState: Story = {
   },
 };
 
-/* Icons */
-export const WithLeftIcon: Story = {
+export const PrimaryWithLeftIcon: Story = {
+  name: 'Primary / Left Icon',
   args: {
     variant: 'primary',
     icon: 'left',
@@ -106,7 +96,8 @@ export const WithLeftIcon: Story = {
   },
 };
 
-export const WithRightIcon: Story = {
+export const PrimaryWithRightIcon: Story = {
+  name: 'Primary / Right Icon',
   args: {
     variant: 'primary',
     icon: 'right',
@@ -114,30 +105,147 @@ export const WithRightIcon: Story = {
   },
 };
 
-export const Loading: Story = {
+/* ==================================================== */
+/* 2. BUTTON SECONDARY STORIES                          */
+/* ==================================================== */
+export const SecondaryDefault: Story = {
+  name: 'Secondary / Default (Outlined)',
   args: {
-    variant: 'primary',
-    loading: true,
+    variant: 'secondary',
+    state: 'normal',
     children: 'Button',
   },
 };
 
-/* Full Matrix Gallery matching Figma Spec */
+export const SecondaryHover: Story = {
+  name: 'Secondary / Hover',
+  args: {
+    variant: 'secondary',
+    state: 'hover',
+    children: 'Button',
+  },
+};
+
+export const SecondaryActive: Story = {
+  name: 'Secondary / Active (Pressed 4px Shrink)',
+  args: {
+    variant: 'secondary',
+    state: 'active',
+    children: 'Button',
+  },
+};
+
+export const SecondaryDisabled: Story = {
+  name: 'Secondary / Disabled',
+  args: {
+    variant: 'secondary',
+    state: 'disabled',
+    children: 'Button',
+  },
+};
+
+export const SecondaryWithLeftIcon: Story = {
+  name: 'Secondary / Left Icon',
+  args: {
+    variant: 'secondary',
+    icon: 'left',
+    children: 'Button',
+  },
+};
+
+export const SecondaryWithRightIcon: Story = {
+  name: 'Secondary / Right Icon',
+  args: {
+    variant: 'secondary',
+    icon: 'right',
+    children: 'Button',
+  },
+};
+
+/* ==================================================== */
+/* 3. BUTTON TERTIARY STORIES                           */
+/* ==================================================== */
+export const TertiaryDefault: Story = {
+  name: 'Tertiary / Default (Text)',
+  args: {
+    variant: 'tertiary',
+    state: 'normal',
+    children: 'Button',
+  },
+};
+
+export const TertiaryHover: Story = {
+  name: 'Tertiary / Hover',
+  args: {
+    variant: 'tertiary',
+    state: 'hover',
+    children: 'Button',
+  },
+};
+
+export const TertiaryActive: Story = {
+  name: 'Tertiary / Active (Darker Text & Background)',
+  args: {
+    variant: 'tertiary',
+    state: 'active',
+    children: 'Button',
+  },
+};
+
+export const TertiaryDisabled: Story = {
+  name: 'Tertiary / Disabled',
+  args: {
+    variant: 'tertiary',
+    state: 'disabled',
+    children: 'Button',
+  },
+};
+
+export const TertiaryWithLeftIcon: Story = {
+  name: 'Tertiary / Left Icon',
+  args: {
+    variant: 'tertiary',
+    icon: 'left',
+    children: 'Button',
+  },
+};
+
+export const TertiaryWithRightIcon: Story = {
+  name: 'Tertiary / Right Icon',
+  args: {
+    variant: 'tertiary',
+    icon: 'right',
+    children: 'Button',
+  },
+};
+
+/* ==================================================== */
+/* FULL MATRIX GALLERY (Figma Spec View)                */
+/* ==================================================== */
 export const AllVariantsAndStates: Story = {
+  name: 'All Variants & States (Figma Spec)',
   render: () => {
-    const variants = ['primary', 'secondary', 'tertiary'] as const;
-    const variantTitles = {
-      primary: '❖ Button Primary',
-      secondary: '❖ Button Secondary',
-      tertiary: '❖ Button Tertiary',
-    };
+    const rows = [
+      {
+        title: '❖ Button Primary',
+        variant: 'primary' as const,
+      },
+      {
+        title: '❖ Button Secondary',
+        variant: 'secondary' as const,
+      },
+      {
+        title: '❖ Button Tertiary',
+        variant: 'tertiary' as const,
+      },
+    ];
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', padding: '24px', fontFamily: 'sans-serif' }}>
-        {variants.map((v) => (
-          <div key={v} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <h3 style={{ margin: 0, color: '#7c3aed', fontSize: '15px', fontWeight: 600 }}>
-              {variantTitles[v]}
+        {rows.map(({ title, variant }) => (
+          <div key={variant} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <h3 style={{ margin: 0, color: '#7c3aed', fontSize: '14px', fontWeight: 600 }}>
+              {title}
             </h3>
             <div
               style={{
@@ -151,28 +259,28 @@ export const AllVariantsAndStates: Story = {
                 flexWrap: 'wrap',
               }}
             >
-              {/* Normal */}
-              <Button variant={v} state="normal">
+              {/* Default */}
+              <Button variant={variant} state="normal">
                 Button
               </Button>
               {/* Hover */}
-              <Button variant={v} state="hover">
+              <Button variant={variant} state="hover">
                 Button
               </Button>
               {/* Active */}
-              <Button variant={v} state="active">
+              <Button variant={variant} state="active">
                 Button
               </Button>
               {/* Disabled */}
-              <Button variant={v} state="disabled">
+              <Button variant={variant} state="disabled">
                 Button
               </Button>
               {/* Left Icon */}
-              <Button variant={v} icon="left">
+              <Button variant={variant} icon="left">
                 Button
               </Button>
               {/* Right Icon */}
-              <Button variant={v} icon="right">
+              <Button variant={variant} icon="right">
                 Button
               </Button>
             </div>

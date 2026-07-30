@@ -1,15 +1,17 @@
-/* Pulse Button Design Tokens - Matching Figma Specification */
+/* Pulse Button Design Tokens - Exact Specification */
 :root {
+  /* Green Palette */
   --pulse-btn-green-primary: #4f8c09;
   --pulse-btn-green-hover-bg: #6ab414;
-  --pulse-btn-green-hover-shadow: #4a8008;
-  --pulse-btn-green-active-bg: #478107;
+  --pulse-btn-green-hover-shadow: #42740c;
+  --pulse-btn-green-active-bg: #3f7007;
   
   --pulse-btn-secondary-hover-bg: #c2e591;
-  --pulse-btn-secondary-active-bg: #bcdc89;
+  --pulse-btn-secondary-active-bg: #b6dc83;
   
   --pulse-btn-tertiary-hover-bg: #e3f2d2;
-  --pulse-btn-tertiary-active-bg: #dbecc8;
+  --pulse-btn-tertiary-active-bg: #d5e8c1;
+  --pulse-btn-tertiary-active-color: #3f7007;
 
   --pulse-btn-disabled-bg: #d8d8d8;
   --pulse-btn-disabled-color: #adadad;
@@ -17,7 +19,7 @@
 
   --pulse-btn-radius: 16px;
   --pulse-btn-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-  --pulse-btn-transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+  --pulse-btn-transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease, transform 0.15s cubic-bezier(0.2, 0, 0, 1);
 }
 
 /* Base Styles */
@@ -74,22 +76,25 @@
   width: 100%;
 }
 
-/* Focus State for Accessibility */
+/* Focus State */
 .pulse-button:focus-visible {
   outline: 2px solid var(--pulse-btn-green-primary);
   outline-offset: 2px;
 }
 
-/* ---------------------------------------------------- */
-/* PRIMARY VARIANT                                       */
-/* ---------------------------------------------------- */
+/* ==================================================== */
+/* 1. BUTTON PRIMARY (First Row)                         */
+/* ==================================================== */
+/* Default: Default state matches reference design */
 .pulse-button--primary {
   background-color: var(--pulse-btn-green-primary);
   color: #ffffff;
   border-color: transparent;
   box-shadow: none;
+  transform: translateY(0);
 }
 
+/* Hover: Slightly lighter than default, with bottom 3D shadow */
 .pulse-button--primary:hover:not(:disabled),
 .pulse-button--primary.pulse-button--state-hover:not(:disabled) {
   background-color: var(--pulse-btn-green-hover-bg);
@@ -99,53 +104,60 @@
   transform: translateY(-2px);
 }
 
+/* Active (Pressed): Slightly darker, bottom shadow completely removed (brutalist click effect) */
 .pulse-button--primary:active:not(:disabled),
 .pulse-button--primary.pulse-button--state-active:not(:disabled) {
   background-color: var(--pulse-btn-green-active-bg);
   color: #ffffff;
   border-color: transparent;
-  box-shadow: none;
-  transform: translateY(0);
+  box-shadow: none !important;
+  transform: translateY(2px);
 }
 
+/* Disabled: Inactive state (light gray) */
 .pulse-button--primary:disabled,
 .pulse-button--primary.pulse-button--state-disabled {
   background-color: var(--pulse-btn-disabled-bg);
   color: var(--pulse-btn-disabled-color);
   border-color: transparent;
   cursor: not-allowed;
-  box-shadow: none;
-  transform: none;
+  box-shadow: none !important;
+  transform: none !important;
 }
 
-/* ---------------------------------------------------- */
-/* SECONDARY VARIANT                                     */
-/* ---------------------------------------------------- */
+/* ==================================================== */
+/* 2. BUTTON SECONDARY (Second Row)                      */
+/* ==================================================== */
+/* Default: Outlined button by default */
 .pulse-button--secondary {
   background-color: #ffffff;
   border-color: var(--pulse-btn-green-primary);
   color: var(--pulse-btn-green-primary);
   box-shadow: none;
+  transform: scale(1);
 }
 
+/* Hover: Slightly darker light green filled background */
 .pulse-button--secondary:hover:not(:disabled),
 .pulse-button--secondary.pulse-button--state-hover:not(:disabled) {
   background-color: var(--pulse-btn-secondary-hover-bg);
   border-color: var(--pulse-btn-green-primary);
   color: var(--pulse-btn-green-primary);
-  box-shadow: 0 3px 0 0 var(--pulse-btn-green-primary);
-  transform: translateY(-1.5px);
+  box-shadow: none;
+  transform: scale(1);
 }
 
+/* Active (Pressed): Scales down by 4 pixels in both width and height when pressed */
 .pulse-button--secondary:active:not(:disabled),
 .pulse-button--secondary.pulse-button--state-active:not(:disabled) {
   background-color: var(--pulse-btn-secondary-active-bg);
   border-color: var(--pulse-btn-green-primary);
   color: var(--pulse-btn-green-primary);
   box-shadow: none;
-  transform: translateY(0);
+  transform: scale(0.91);
 }
 
+/* Disabled: Inactive outlined state */
 .pulse-button--secondary:disabled,
 .pulse-button--secondary.pulse-button--state-disabled {
   background-color: #ffffff;
@@ -153,19 +165,22 @@
   color: var(--pulse-btn-disabled-color);
   cursor: not-allowed;
   box-shadow: none;
-  transform: none;
+  transform: none !important;
 }
 
-/* ---------------------------------------------------- */
-/* TERTIARY VARIANT                                      */
-/* ---------------------------------------------------- */
+/* ==================================================== */
+/* 3. BUTTON TERTIARY (Third Row / Text Buttons)        */
+/* ==================================================== */
+/* Default: Text-only state */
 .pulse-button--tertiary {
   background-color: transparent;
   border-color: transparent;
   color: var(--pulse-btn-green-primary);
   box-shadow: none;
+  transform: none;
 }
 
+/* Hover: Background highlights with subtle color */
 .pulse-button--tertiary:hover:not(:disabled),
 .pulse-button--tertiary.pulse-button--state-hover:not(:disabled) {
   background-color: var(--pulse-btn-tertiary-hover-bg);
@@ -175,15 +190,17 @@
   transform: none;
 }
 
+/* Active (Pressed): Background and text color become slightly darker than hover state */
 .pulse-button--tertiary:active:not(:disabled),
 .pulse-button--tertiary.pulse-button--state-active:not(:disabled) {
   background-color: var(--pulse-btn-tertiary-active-bg);
   border-color: transparent;
-  color: var(--pulse-btn-green-primary);
+  color: var(--pulse-btn-tertiary-active-color);
   box-shadow: none;
   transform: none;
 }
 
+/* Disabled: Inactive text state */
 .pulse-button--tertiary:disabled,
 .pulse-button--tertiary.pulse-button--state-disabled {
   background-color: transparent;
@@ -191,12 +208,12 @@
   color: var(--pulse-btn-disabled-color);
   cursor: not-allowed;
   box-shadow: none;
-  transform: none;
+  transform: none !important;
 }
 
-/* ---------------------------------------------------- */
+/* ==================================================== */
 /* SPINNER & ICON STYLING                               */
-/* ---------------------------------------------------- */
+/* ==================================================== */
 .pulse-button--loading {
   cursor: wait;
 }
