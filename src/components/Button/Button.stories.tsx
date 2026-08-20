@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
   },
   tags: ['autodocs'],
   argTypes: {
@@ -41,7 +41,92 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 /* ==================================================== */
-/* 1. BUTTON PRIMARY                                    */
+/* 1. FULL SHOWCASE MATRIX (Matches Screenshot Grid)   */
+/* ==================================================== */
+export const AllVariantsShowcase: Story = {
+  name: 'Showcase Grid (Exact Figma Spec)',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', padding: '32px', background: '#fafafa', fontFamily: 'sans-serif' }}>
+      {/* 1. BUTTON PRIMARY ROW */}
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#7732bb', fontWeight: 600, fontSize: '14px', marginBottom: '16px' }}>
+          <span>❖</span>
+          <span>Button Primary</span>
+        </div>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '32px',
+          padding: '24px 32px',
+          border: '1.5px dashed #9382e2',
+          borderRadius: '16px',
+          background: '#ffffff',
+          flexWrap: 'wrap'
+        }}>
+          <Button variant="primary" state="normal">Button</Button>
+          <Button variant="primary" state="hover">Button</Button>
+          <Button variant="primary" state="active">Button</Button>
+          <Button variant="primary" state="disabled">Button</Button>
+          <Button variant="primary" icon="left">Button</Button>
+          <Button variant="primary" icon="right">Button</Button>
+        </div>
+      </div>
+
+      {/* 2. BUTTON SECONDARY ROW */}
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#7732bb', fontWeight: 600, fontSize: '14px', marginBottom: '16px' }}>
+          <span>❖</span>
+          <span>Button Secondary</span>
+        </div>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '32px',
+          padding: '24px 32px',
+          border: '1.5px dashed #9382e2',
+          borderRadius: '16px',
+          background: '#ffffff',
+          flexWrap: 'wrap'
+        }}>
+          <Button variant="secondary" state="normal">Button</Button>
+          <Button variant="secondary" state="hover">Button</Button>
+          <Button variant="secondary" state="active">Button</Button>
+          <Button variant="secondary" state="disabled">Button</Button>
+          <Button variant="secondary" icon="left">Button</Button>
+          <Button variant="secondary" icon="right">Button</Button>
+        </div>
+      </div>
+
+      {/* 3. BUTTON TERTIARY ROW */}
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#7732bb', fontWeight: 600, fontSize: '14px', marginBottom: '16px' }}>
+          <span>❖</span>
+          <span>Button Tertiary</span>
+        </div>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '32px',
+          padding: '24px 32px',
+          border: '1.5px dashed #9382e2',
+          borderRadius: '16px',
+          background: '#ffffff',
+          flexWrap: 'wrap'
+        }}>
+          <Button variant="tertiary" state="normal">Button</Button>
+          <Button variant="tertiary" state="hover">Button</Button>
+          <Button variant="tertiary" state="active">Button</Button>
+          <Button variant="tertiary" state="disabled">Button</Button>
+          <Button variant="tertiary" icon="left">Button</Button>
+          <Button variant="tertiary" icon="right">Button</Button>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+/* ==================================================== */
+/* 2. BUTTON PRIMARY INDIVIDUAL STORIES                 */
 /* ==================================================== */
 export const PrimaryDefault: Story = {
   name: 'Primary / Default',
@@ -98,7 +183,7 @@ export const PrimaryWithRightIcon: Story = {
 };
 
 /* ==================================================== */
-/* 2. BUTTON SECONDARY                                  */
+/* 3. BUTTON SECONDARY INDIVIDUAL STORIES               */
 /* ==================================================== */
 export const SecondaryDefault: Story = {
   name: 'Secondary / Default (Outlined)',
@@ -119,7 +204,7 @@ export const SecondaryHover: Story = {
 };
 
 export const SecondaryActive: Story = {
-  name: 'Secondary / Active (Pressed 4px Shrink)',
+  name: 'Secondary / Active (Pressed)',
   args: {
     variant: 'secondary',
     state: 'active',
@@ -155,7 +240,7 @@ export const SecondaryWithRightIcon: Story = {
 };
 
 /* ==================================================== */
-/* 3. BUTTON TERTIARY                                   */
+/* 4. BUTTON TERTIARY INDIVIDUAL STORIES                */
 /* ==================================================== */
 export const TertiaryDefault: Story = {
   name: 'Tertiary / Default (Text)',
@@ -176,7 +261,7 @@ export const TertiaryHover: Story = {
 };
 
 export const TertiaryActive: Story = {
-  name: 'Tertiary / Active (Darker Text & Background)',
+  name: 'Tertiary / Active',
   args: {
     variant: 'tertiary',
     state: 'active',
