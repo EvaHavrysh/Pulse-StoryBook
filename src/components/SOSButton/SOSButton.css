@@ -241,21 +241,6 @@
   transform: translateY(0);
 }
 
-.pulse-sos-button--state-sent.pulse-sos-button--size-1,
-.pulse-sos-button--state-sent.pulse-sos-button--small {
-  font-size: 9px !important;
-}
-
-.pulse-sos-button--state-sent.pulse-sos-button--size-2,
-.pulse-sos-button--state-sent.pulse-sos-button--medium {
-  font-size: 11.5px !important;
-}
-
-.pulse-sos-button--state-sent.pulse-sos-button--size-3,
-.pulse-sos-button--state-sent.pulse-sos-button--large {
-  font-size: 14px !important;
-}
-
 .pulse-sos-button--state-sent:hover:not(:disabled) {
   background-color: var(--pulse-sos-green-hover-bg);
   color: #ffffff;
