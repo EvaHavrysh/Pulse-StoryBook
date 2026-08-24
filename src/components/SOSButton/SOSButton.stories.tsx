@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SOSButton } from './SOSButton';
 
@@ -146,27 +145,13 @@ export const IconState: Story = {
 export const InteractiveCountdown: Story = {
   name: '6. Interactive Countdown (Active Activation Sequence)',
   render: function InteractiveCountdownStory() {
-    const [statusText, setStatusText] = useState('Click the SOS button to start the 15-second activation countdown.');
-
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px', padding: '40px', fontFamily: 'sans-serif' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '40px' }}>
         <SOSButton
           size={3}
           countdownValue={15}
           sentLabel="Sent"
-          onStateChange={(state) => {
-            if (state === 'countdown') {
-              setStatusText('Countdown active (15s → 0s). Radar pulse waves active. Click again to cancel.');
-            } else if (state === 'sent') {
-              setStatusText('SOS Signal Sent successfully! ("Sent")');
-            } else if (state === 'default') {
-              setStatusText('Countdown cancelled. Click SOS to trigger again.');
-            }
-          }}
         />
-        <div style={{ fontSize: '14px', color: '#555', textAlign: 'center', maxWidth: '360px', lineHeight: 1.5 }}>
-          {statusText}
-        </div>
       </div>
     );
   },
