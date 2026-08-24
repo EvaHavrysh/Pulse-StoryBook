@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PhoneInput } from './PhoneInput';
 import { TextInput } from './TextInput';
-import { SearchInput } from './SearchInput';
 
 const meta: Meta<typeof PhoneInput> = {
   title: 'Components/Input',
@@ -95,30 +94,6 @@ export const AllVariantsShowcase: Story = {
           <TextInput label="Other" state="default" placeholder="Type here..." multiline rows={4} />
         </div>
       </div>
-
-      {/* THIRD COLUMN: SEARCH INPUT (SEARCH SPEC) */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '380px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#7732bb', fontWeight: 600, fontSize: '15px' }}>
-          <span>❖</span>
-          <span>Input (Search)</span>
-        </div>
-
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '24px',
-          padding: '32px 28px',
-          border: '1.5px dashed #9382e2',
-          borderRadius: '16px',
-          background: '#ffffff',
-        }}>
-          {/* 1. Default State (Top): Dark grey border, placeholder "Search" */}
-          <SearchInput state="default" placeholder="Search" />
-
-          {/* 2. Active State (Bottom): Lighter grey border, typed "News" with blinking cursor */}
-          <SearchInput state="active" value="News" showCursor={true} />
-        </div>
-      </div>
     </div>
   ),
 };
@@ -181,17 +156,4 @@ export const TextInputError: Story = {
 export const TextInputMultiline: Story = {
   name: 'Text / Multiline (Large Box)',
   render: () => <div style={{ width: '360px' }}><TextInput label="Other" multiline rows={4} placeholder="Type here..." /></div>,
-};
-
-/* ==================================================== */
-/* 4. INDIVIDUAL SEARCH INPUT STORIES                  */
-/* ==================================================== */
-export const SearchInputDefault: Story = {
-  name: 'Search / Default',
-  render: () => <div style={{ width: '360px' }}><SearchInput state="default" placeholder="Search" /></div>,
-};
-
-export const SearchInputActive: Story = {
-  name: 'Search / Active (Typed "News")',
-  render: () => <div style={{ width: '360px' }}><SearchInput state="active" value="News" showCursor /></div>,
 };
