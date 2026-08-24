@@ -6,3 +6,4 @@ export * from './Checkbox/Checkbox';
 export * from './Skeleton/Skeleton';
 export * from './Switch/Switch';
 export * from './Typography/Typography';
+export * from './EmptyState/EmptyState';
