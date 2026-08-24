@@ -65,44 +65,61 @@ export const SosButton = forwardRef<HTMLButtonElement, SosButtonProps>(
 
     useEffect(() => {
       if (state === 'countdown' && playAudio) {
+        let ctx: AudioContext | null = null;
+        try {
+          const AudioCtx =
+            window.AudioContext ||
+            (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+          if (AudioCtx) {
+            ctx = new AudioCtx();
+            if (ctx.state === 'suspended') {
+              ctx.resume().catch(() => {});
+            }
+          }
+        } catch {
+          ctx = null;
+        }
+
         const playBeep = () => {
+          if (!ctx || ctx.state === 'closed') return;
           try {
-            const AudioCtx =
-              window.AudioContext ||
-              (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-            if (!AudioCtx) return;
-            const ctx = new AudioCtx();
+            if (ctx.state === 'suspended') {
+              ctx.resume().catch(() => {});
+            }
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
 
             osc.type = 'sine';
             osc.frequency.setValueAtTime(880, ctx.currentTime);
             gain.gain.setValueAtTime(0.08, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.18);
 
             osc.connect(gain);
             gain.connect(ctx.destination);
 
-            osc.start();
-            osc.stop(ctx.currentTime + 0.15);
+            osc.start(ctx.currentTime);
+            osc.stop(ctx.currentTime + 0.18);
           } catch {
-            // Gracefully ignore autoplay restrictions
+            // Ignore audio errors gracefully
           }
         };
 
+        // Play initial beep
         playBeep();
-        audioIntervalRef.current = setInterval(playBeep, 800);
-      } else if (audioIntervalRef.current) {
-        clearInterval(audioIntervalRef.current);
-        audioIntervalRef.current = null;
-      }
 
-      return () => {
-        if (audioIntervalRef.current) {
-          clearInterval(audioIntervalRef.current);
-          audioIntervalRef.current = null;
-        }
-      };
+        // Repeat every 500ms seamlessly
+        audioIntervalRef.current = setInterval(playBeep, 500);
+
+        return () => {
+          if (audioIntervalRef.current) {
+            clearInterval(audioIntervalRef.current);
+            audioIntervalRef.current = null;
+          }
+          if (ctx && ctx.state !== 'closed') {
+            ctx.close().catch(() => {});
+          }
+        };
+      }
     }, [state, playAudio]);
 
     return (
