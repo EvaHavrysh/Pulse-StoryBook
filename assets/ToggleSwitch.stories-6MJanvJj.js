@@ -1,0 +1,15 @@
+import{i as e,s as t}from"./preload-helper-CT_b8DTk.js";import{t as n}from"./iframe-CsrpdqOX.js";import{t as r}from"./jsx-runtime-DqZldVDK.js";var i=e((()=>{})),a,o,s,c=e((()=>{a=t(n(),1),i(),o=r(),s=(0,a.forwardRef)(({className:e=``,variant:t,checked:n,defaultChecked:r=!1,disabled:i=!1,onChange:s,onClick:c,...l},u)=>{let[d,f]=(0,a.useState)(r),p=n===void 0?d:n,m=t===void 0?i?`disabled`:p?`active`:`inactive`:t;return(0,o.jsx)(`button`,{ref:u,type:`button`,role:`switch`,"aria-checked":m===`active`,disabled:i||m===`disabled`,onClick:e=>{if(i||m===`disabled`)return;let t=!p;n===void 0&&f(t),s?.(t),c?.(e)},className:`pulse-toggle-switch pulse-toggle-switch--${m} ${e}`.trim(),...l,children:(0,o.jsx)(`span`,{className:`pulse-toggle-switch__thumb`,"aria-hidden":`true`})})}),s.displayName=`ToggleSwitch`,s.__docgenInfo={description:``,methods:[],displayName:`ToggleSwitch`,props:{variant:{required:!1,tsType:{name:`union`,raw:`'active' | 'inactive' | 'disabled'`,elements:[{name:`literal`,value:`'active'`},{name:`literal`,value:`'inactive'`},{name:`literal`,value:`'disabled'`}]},description:"Explicit variant representation: 'active' (On) | 'inactive' (Off) | 'disabled' (Muted).\nIf omitted, calculated dynamically from `checked` & `disabled` props."},checked:{required:!1,tsType:{name:`boolean`},description:`Controlled toggle state.`},defaultChecked:{required:!1,tsType:{name:`boolean`},description:`Default checked state for uncontrolled usage.`,defaultValue:{value:`false`,computed:!1}},disabled:{required:!1,tsType:{name:`boolean`},description:`Disabled interactive state.`,defaultValue:{value:`false`,computed:!1}},onChange:{required:!1,tsType:{name:`signature`,type:`function`,raw:`(checked: boolean) => void`,signature:{arguments:[{type:{name:`boolean`},name:`checked`}],return:{name:`void`}}},description:`Callback fired when toggled.`},className:{defaultValue:{value:`''`,computed:!1},required:!1}},composes:[`Omit`]}})),l,u,d,f,p;e((()=>{c(),l={title:`Components/ToggleSwitch`,component:s,tags:[`autodocs`],argTypes:{checked:{control:`boolean`},disabled:{control:`boolean`},onChange:{action:`toggled`}}},u={args:{defaultChecked:!1,disabled:!1}},d={args:{defaultChecked:!0,disabled:!1}},f={args:{disabled:!0}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+  args: {
+    defaultChecked: false,
+    disabled: false
+  }
+}`,...u.parameters?.docs?.source}}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+  args: {
+    defaultChecked: true,
+    disabled: false
+  }
+}`,...d.parameters?.docs?.source}}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
+  args: {
+    disabled: true
+  }
+}`,...f.parameters?.docs?.source}}},p=[`Default`,`Checked`,`Disabled`]}))();export{d as Checked,u as Default,f as Disabled,p as __namedExportsOrder,l as default};

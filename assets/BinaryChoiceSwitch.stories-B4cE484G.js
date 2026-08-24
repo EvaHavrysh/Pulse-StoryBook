@@ -1,0 +1,18 @@
+import{i as e,s as t}from"./preload-helper-CT_b8DTk.js";import{t as n}from"./iframe-CsrpdqOX.js";import{t as r}from"./jsx-runtime-DqZldVDK.js";var i=e((()=>{})),a,o,s,c=e((()=>{a=t(n(),1),i(),o=r(),s=(0,a.forwardRef)(({className:e=``,value:t,defaultValue:n=`no`,onChange:r,noLabel:i=`No`,yesLabel:s=`Yes`,disabled:c=!1,...l},u)=>{let[d,f]=(0,a.useState)(n),p=t===void 0?d:t,m=e=>{c||(t===void 0&&f(e),r?.(e))};return(0,o.jsxs)(`div`,{ref:u,role:`radiogroup`,"aria-disabled":c,className:`pulse-binary-switch ${c?`pulse-binary-switch--disabled`:``} ${e}`.trim(),...l,children:[(0,o.jsx)(`div`,{className:`pulse-binary-switch__slider pulse-binary-switch__slider--${p}`,"aria-hidden":`true`}),(0,o.jsx)(`button`,{type:`button`,role:`radio`,"aria-checked":p===`no`,disabled:c,className:`pulse-binary-switch__option ${p===`no`?`pulse-binary-switch__option--active`:``}`,onClick:()=>m(`no`),children:i}),(0,o.jsx)(`button`,{type:`button`,role:`radio`,"aria-checked":p===`yes`,disabled:c,className:`pulse-binary-switch__option ${p===`yes`?`pulse-binary-switch__option--active`:``}`,onClick:()=>m(`yes`),children:s})]})}),s.displayName=`BinaryChoiceSwitch`,s.__docgenInfo={description:``,methods:[],displayName:`BinaryChoiceSwitch`,props:{value:{required:!1,tsType:{name:`union`,raw:`'no' | 'yes'`,elements:[{name:`literal`,value:`'no'`},{name:`literal`,value:`'yes'`}]},description:`Controlled value: 'no' | 'yes'.`},defaultValue:{required:!1,tsType:{name:`union`,raw:`'no' | 'yes'`,elements:[{name:`literal`,value:`'no'`},{name:`literal`,value:`'yes'`}]},description:`Initial value when uncontrolled. Defaults to 'no'.`,defaultValue:{value:`'no'`,computed:!1}},onChange:{required:!1,tsType:{name:`signature`,type:`function`,raw:`(value: BinaryChoiceValue) => void`,signature:{arguments:[{type:{name:`union`,raw:`'no' | 'yes'`,elements:[{name:`literal`,value:`'no'`},{name:`literal`,value:`'yes'`}]},name:`value`}],return:{name:`void`}}},description:`Callback fired when selected option changes.`},noLabel:{required:!1,tsType:{name:`string`},description:`Custom label for the left option. Defaults to "No".`,defaultValue:{value:`'No'`,computed:!1}},yesLabel:{required:!1,tsType:{name:`string`},description:`Custom label for the right option. Defaults to "Yes".`,defaultValue:{value:`'Yes'`,computed:!1}},disabled:{required:!1,tsType:{name:`boolean`},description:`Disabled state.`,defaultValue:{value:`false`,computed:!1}},className:{defaultValue:{value:`''`,computed:!1},required:!1}},composes:[`Omit`]}})),l,u,d,f,p;e((()=>{c(),l={title:`Components/BinaryChoiceSwitch`,component:s,tags:[`autodocs`],argTypes:{value:{control:`select`,options:[`no`,`yes`]},noLabel:{control:`text`},yesLabel:{control:`text`},disabled:{control:`boolean`},onChange:{action:`changed`}}},u={args:{defaultValue:`no`,noLabel:`No`,yesLabel:`Yes`}},d={args:{defaultValue:`yes`,noLabel:`No`,yesLabel:`Yes`}},f={args:{noLabel:`No`,yesLabel:`Yes`}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+  args: {
+    defaultValue: 'no',
+    noLabel: 'No',
+    yesLabel: 'Yes'
+  }
+}`,...u.parameters?.docs?.source}}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+  args: {
+    defaultValue: 'yes',
+    noLabel: 'No',
+    yesLabel: 'Yes'
+  }
+}`,...d.parameters?.docs?.source}}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
+  args: {
+    noLabel: 'No',
+    yesLabel: 'Yes'
+  }
+}`,...f.parameters?.docs?.source}}},p=[`DefaultNoSelected`,`YesSelected`,`InteractiveDemo`]}))();export{u as DefaultNoSelected,f as InteractiveDemo,d as YesSelected,p as __namedExportsOrder,l as default};

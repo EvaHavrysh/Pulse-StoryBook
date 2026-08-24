@@ -1,1 +1,0 @@
-.pulse-skeleton{background:linear-gradient(90deg,#e4e4e7 25%,#f4f4f5 50%,#e4e4e7 75%) 0 0/200% 100%;border-radius:4px;width:100%;height:1.25em;animation:1.6s linear infinite pulse-shimmer;display:block;position:relative;overflow:hidden}.pulse-skeleton--circle{border-radius:50%}@keyframes pulse-shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}

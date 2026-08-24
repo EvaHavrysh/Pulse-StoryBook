@@ -1,0 +1,18 @@
+import{i as e,s as t}from"./preload-helper-CT_b8DTk.js";import{t as n}from"./iframe-CsrpdqOX.js";import{t as r}from"./jsx-runtime-DqZldVDK.js";var i=e((()=>{})),a,o,s,c,l=e((()=>{a=t(n(),1),i(),o=r(),s=()=>(0,o.jsxs)(`svg`,{width:`20`,height:`20`,viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:`2.4`,strokeLinecap:`round`,strokeLinejoin:`round`,"aria-hidden":`true`,children:[(0,o.jsx)(`circle`,{cx:`11`,cy:`11`,r:`7`}),(0,o.jsx)(`line`,{x1:`16.5`,y1:`16.5`,x2:`21`,y2:`21`})]}),c=(0,a.forwardRef)(({className:e=``,variantState:t,value:n,defaultValue:r=``,placeholder:i=`Search`,onChange:c,onFocus:l,onBlur:u,disabled:d=!1,...f},p)=>{let[m,h]=(0,a.useState)(r),[g,_]=(0,a.useState)(!1),v=n===void 0?m:n,y=t===void 0?g||v.length>0?`active`:`default`:t;return(0,o.jsxs)(`div`,{className:`pulse-search-bar pulse-search-bar--${y} ${d?`pulse-search-bar--disabled`:``} ${e}`.trim(),children:[(0,o.jsx)(`span`,{className:`pulse-search-bar__icon`,children:(0,o.jsx)(s,{})}),(0,o.jsx)(`input`,{ref:p,type:`text`,disabled:d,value:v,placeholder:i,onChange:e=>{let t=e.target.value;n===void 0&&h(t),c?.(t)},onFocus:e=>{_(!0),l?.(e)},onBlur:e=>{_(!1),u?.(e)},className:`pulse-search-bar__input`,...f})]})}),c.displayName=`SearchBar`,c.__docgenInfo={description:``,methods:[],displayName:`SearchBar`,props:{variantState:{required:!1,tsType:{name:`union`,raw:`'default' | 'active'`,elements:[{name:`literal`,value:`'default'`},{name:`literal`,value:`'active'`}]},description:`Explicit visual state variant: 'default' (Darker gray border) | 'active' (Lighter gray border).`},value:{required:!1,tsType:{name:`string`},description:`Controlled input value.`},defaultValue:{required:!1,tsType:{name:`string`},description:`Default value for uncontrolled usage.`,defaultValue:{value:`''`,computed:!1}},placeholder:{required:!1,tsType:{name:`string`},description:`Placeholder text. Defaults to "Search".`,defaultValue:{value:`'Search'`,computed:!1}},onChange:{required:!1,tsType:{name:`signature`,type:`function`,raw:`(value: string) => void`,signature:{arguments:[{type:{name:`string`},name:`value`}],return:{name:`void`}}},description:`Callback fired when input value changes.`},className:{defaultValue:{value:`''`,computed:!1},required:!1},disabled:{defaultValue:{value:`false`,computed:!1},required:!1}},composes:[`Omit`]}})),u,d,f,p,m;e((()=>{l(),u={title:`Components/SearchBar`,component:c,tags:[`autodocs`],argTypes:{variantState:{control:`select`,options:[`default`,`active`],description:`Force visual state variant: default (darker border) vs active (lighter border)`},placeholder:{control:`text`},value:{control:`text`},disabled:{control:`boolean`},onChange:{action:`textChanged`}}},d={args:{variantState:`default`,placeholder:`Search`,value:``}},f={args:{variantState:`active`,placeholder:`Search`,value:`News`}},p={args:{placeholder:`Search`,defaultValue:``}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+  args: {
+    variantState: 'default',
+    placeholder: 'Search',
+    value: ''
+  }
+}`,...d.parameters?.docs?.source}}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
+  args: {
+    variantState: 'active',
+    placeholder: 'Search',
+    value: 'News'
+  }
+}`,...f.parameters?.docs?.source}}},p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{
+  args: {
+    placeholder: 'Search',
+    defaultValue: ''
+  }
+}`,...p.parameters?.docs?.source}}},m=[`DefaultState`,`ActiveState`,`Interactive`]}))();export{f as ActiveState,d as DefaultState,p as Interactive,m as __namedExportsOrder,u as default};
