@@ -9,3 +9,4 @@ export * from './StatusContactCard/StatusContactCard';
 export * from './SearchBar/SearchBar';
 export * from './TopNavigationBar/TopNavigationBar';
 export * from './OtpInput/OtpInput';
+export * from './BottomNavigationBar/BottomNavigationBar';
