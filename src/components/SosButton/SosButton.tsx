@@ -18,6 +18,10 @@ export interface SosButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButt
    */
   countdownSeconds?: number;
   /**
+   * Total maximum seconds for progress ring. Defaults to 15.
+   */
+  maxSeconds?: number;
+  /**
    * Whether to play subtle alarm audio during countdown. Defaults to true.
    */
   playAudio?: boolean;
@@ -54,6 +58,7 @@ export const SosButton = forwardRef<HTMLButtonElement, SosButtonProps>(
       state = 'default',
       contentMode = 'text',
       countdownSeconds = 15,
+      maxSeconds = 15,
       playAudio = true,
       onClick,
       disabled = false,
@@ -62,6 +67,11 @@ export const SosButton = forwardRef<HTMLButtonElement, SosButtonProps>(
     ref
   ) => {
     const audioIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+    const radius = 48;
+    const circumference = 2 * Math.PI * radius;
+    const elapsedRatio = Math.min(Math.max((maxSeconds - countdownSeconds) / maxSeconds, 0), 1);
+    const progressOffset = circumference - elapsedRatio * circumference;
 
     useEffect(() => {
       if (state === 'countdown' && playAudio) {
@@ -89,12 +99,10 @@ export const SosButton = forwardRef<HTMLButtonElement, SosButtonProps>(
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
 
-            // Smooth, pleasant sine wave with a soft musical pitch shift (A4 440Hz -> C5 523Hz)
             osc.type = 'sine';
             osc.frequency.setValueAtTime(440, ctx.currentTime);
             osc.frequency.exponentialRampToValueAtTime(523.25, ctx.currentTime + 0.08);
 
-            // Gentle gain envelope for an organic, pleasant chime pulse
             gain.gain.setValueAtTime(0.001, ctx.currentTime);
             gain.gain.linearRampToValueAtTime(0.035, ctx.currentTime + 0.02);
             gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.35);
@@ -109,10 +117,7 @@ export const SosButton = forwardRef<HTMLButtonElement, SosButtonProps>(
           }
         };
 
-        // Play initial soft chime
         playBeep();
-
-        // Repeat smoothly every 750ms
         audioIntervalRef.current = setInterval(playBeep, 750);
 
         return () => {
@@ -131,9 +136,26 @@ export const SosButton = forwardRef<HTMLButtonElement, SosButtonProps>(
       <div className="pulse-sos-wrapper">
         {state === 'countdown' && (
           <>
+            {/* Concentric Radar Waves */}
             <div className="pulse-sos-radar-wave pulse-sos-radar-wave--1" />
             <div className="pulse-sos-radar-wave pulse-sos-radar-wave--2" />
             <div className="pulse-sos-radar-wave pulse-sos-radar-wave--3" />
+
+            {/* Stationary Progress Ring Overlay */}
+            <div className="pulse-sos-ring-wrapper">
+              <svg className="pulse-sos-ring-svg" viewBox="0 0 108 108">
+                <circle className="pulse-sos-ring-bg" cx="54" cy="54" r={radius} fill="none" />
+                <circle
+                  className="pulse-sos-ring-progress"
+                  cx="54"
+                  cy="54"
+                  r={radius}
+                  fill="none"
+                  strokeDasharray={circumference}
+                  strokeDashoffset={progressOffset}
+                />
+              </svg>
+            </div>
           </>
         )}
 
