@@ -29,12 +29,3 @@ export const Danger: Story = {
     variant: 'danger',
   },
 };
-
-export const BothVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-      <StatusBadge variant="safe" />
-      <StatusBadge variant="danger" />
-    </div>
-  ),
-};
