@@ -4,8 +4,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 240px;
-  height: 240px;
+  width: 120px;
+  height: 120px;
 }
 
 .pulse-sos-button {
@@ -80,7 +80,7 @@
   animation: pulse-sos-breathe 1.2s ease-in-out infinite alternate !important;
 }
 
-/* Concentric Radar Waves Animation */
+/* Clean Concentric Radar Wave Hairlines */
 .pulse-sos-radar-wave {
   position: absolute;
   top: calc(50% - 50px);
@@ -88,8 +88,8 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: rgba(184, 0, 0, 0.25);
-  border: 2px solid rgba(184, 0, 0, 0.5);
+  background: transparent !important;
+  border: 1.5px solid rgba(184, 0, 0, 0.35) !important;
   pointer-events: none;
   z-index: 1;
   animation: pulse-sos-radar-ripple 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;

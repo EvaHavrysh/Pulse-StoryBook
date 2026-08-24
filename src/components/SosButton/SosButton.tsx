@@ -70,8 +70,9 @@ export const SosButton = forwardRef<HTMLButtonElement, SosButtonProps>(
 
     const radius = 48;
     const circumference = 2 * Math.PI * radius;
-    const elapsedRatio = Math.min(Math.max((maxSeconds - countdownSeconds) / maxSeconds, 0), 1);
-    const progressOffset = circumference - elapsedRatio * circumference;
+    // Reverse burning ring effect: starts 100% full at maxSeconds (15s), decreases down to 0% at 0s.
+    const remainingRatio = Math.max(Math.min(countdownSeconds / maxSeconds, 1), 0);
+    const progressOffset = circumference - remainingRatio * circumference;
 
     useEffect(() => {
       if (state === 'countdown' && playAudio) {
@@ -136,12 +137,12 @@ export const SosButton = forwardRef<HTMLButtonElement, SosButtonProps>(
       <div className="pulse-sos-wrapper">
         {state === 'countdown' && (
           <>
-            {/* Concentric Radar Waves */}
+            {/* Clean Concentric Radar Waves */}
             <div className="pulse-sos-radar-wave pulse-sos-radar-wave--1" />
             <div className="pulse-sos-radar-wave pulse-sos-radar-wave--2" />
             <div className="pulse-sos-radar-wave pulse-sos-radar-wave--3" />
 
-            {/* Stationary Progress Ring Overlay */}
+            {/* Stationary Progress Ring Overlay (Burning Ring Effect) */}
             <div className="pulse-sos-ring-wrapper">
               <svg className="pulse-sos-ring-svg" viewBox="0 0 108 108">
                 <circle className="pulse-sos-ring-bg" cx="54" cy="54" r={radius} fill="none" />
