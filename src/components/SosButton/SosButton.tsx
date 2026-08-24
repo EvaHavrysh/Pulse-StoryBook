@@ -89,26 +89,31 @@ export const SosButton = forwardRef<HTMLButtonElement, SosButtonProps>(
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
 
+            // Smooth, pleasant sine wave with a soft musical pitch shift (A4 440Hz -> C5 523Hz)
             osc.type = 'sine';
-            osc.frequency.setValueAtTime(880, ctx.currentTime);
-            gain.gain.setValueAtTime(0.08, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.18);
+            osc.frequency.setValueAtTime(440, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(523.25, ctx.currentTime + 0.08);
+
+            // Gentle gain envelope for an organic, pleasant chime pulse
+            gain.gain.setValueAtTime(0.001, ctx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.035, ctx.currentTime + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.35);
 
             osc.connect(gain);
             gain.connect(ctx.destination);
 
             osc.start(ctx.currentTime);
-            osc.stop(ctx.currentTime + 0.18);
+            osc.stop(ctx.currentTime + 0.35);
           } catch {
             // Ignore audio errors gracefully
           }
         };
 
-        // Play initial beep
+        // Play initial soft chime
         playBeep();
 
-        // Repeat every 500ms seamlessly
-        audioIntervalRef.current = setInterval(playBeep, 500);
+        // Repeat smoothly every 750ms
+        audioIntervalRef.current = setInterval(playBeep, 750);
 
         return () => {
           if (audioIntervalRef.current) {
