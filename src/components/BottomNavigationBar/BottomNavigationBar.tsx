@@ -20,21 +20,19 @@ export interface BottomNavigationBarProps extends Omit<React.HTMLAttributes<HTML
 
 const HomeIcon = ({ active }: { active: boolean }) =>
   active ? (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 9.5L12 2.5L21 9.5V20.5C21 21.3284 20.3284 22 19.5 22H15V14H9V22H4.5C3.67157 22 3 21.3284 3 20.5V9.5Z" fill="currentColor" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 9.5L12 2.5L21 9.5V20.5C21 21.3284 20.3284 22 19.5 22H15V14.5H9V22H4.5C3.67157 22 3 21.3284 3 20.5V9.5Z" />
     </svg>
   ) : (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-      <polyline points="9 22 9 12 15 12 15 22" />
+      <path d="M3 9.5L12 2.5L21 9.5V20.5C21 21.3284 20.3284 22 19.5 22H15V14.5H9V22H4.5C3.67157 22 3 21.3284 3 20.5V9.5Z" />
     </svg>
   );
 
 const BellIcon = ({ active }: { active: boolean }) =>
   active ? (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2.5C8.686 2.5 6 5.186 6 8.5C6 15 3 17 3 17H21C21 17 18 15 18 8.5C18 5.186 15.314 2.5 12 2.5Z" fill="currentColor" />
-      <path d="M14 18.5C14 19.6046 13.1046 20.5 12 20.5C10.8954 20.5 10 19.6046 10 18.5H14Z" fill="currentColor" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fillRule="evenodd" clipRule="evenodd" d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9ZM10.27 21a2 2 0 0 0 3.46 0H10.27Z" />
     </svg>
   ) : (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -45,26 +43,25 @@ const BellIcon = ({ active }: { active: boolean }) =>
 
 const CommunityIcon = ({ active }: { active: boolean }) =>
   active ? (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="7" r="3.5" fill="currentColor" />
-      <circle cx="6" cy="11" r="2.5" fill="currentColor" />
-      <circle cx="18" cy="11" r="2.5" fill="currentColor" />
-      <path d="M4 19.5C4 16.8 7.5 15.5 12 15.5C16.5 15.5 20 16.8 20 19.5V20.5H4V19.5Z" fill="currentColor" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="7.5" r="3" />
+      <circle cx="5" cy="11" r="2.5" />
+      <circle cx="19" cy="11" r="2.5" />
+      <path d="M4.5 19.5C4.5 17 7.5 15.5 12 15.5C16.5 15.5 19.5 17 19.5 19.5V20.5H4.5V19.5Z" />
     </svg>
   ) : (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="7" r="3" />
-      <circle cx="6" cy="11" r="2.5" />
-      <circle cx="18" cy="11" r="2.5" />
-      <path d="M5 19a7 7 0 0 1 14 0" />
+      <circle cx="12" cy="7.5" r="3" />
+      <circle cx="5" cy="11" r="2.5" />
+      <circle cx="19" cy="11" r="2.5" />
+      <path d="M4.5 19.5c0-2.5 3-4 7.5-4s7.5 1.5 7.5 4" />
     </svg>
   );
 
 const UserIcon = ({ active }: { active: boolean }) =>
   active ? (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 13.5C7.58172 13.5 4 17.0817 4 21.5H20C20 17.0817 16.4183 13.5 12 13.5Z" fill="currentColor" />
-      <circle cx="12" cy="7" r="4.5" fill="currentColor" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fillRule="evenodd" clipRule="evenodd" d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 21v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2H4Z" />
     </svg>
   ) : (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
