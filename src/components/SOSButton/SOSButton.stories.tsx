@@ -144,15 +144,5 @@ export const IconState: Story = {
 
 export const InteractiveCountdown: Story = {
   name: '6. Interactive Countdown (Active Activation Sequence)',
-  render: function InteractiveCountdownStory() {
-    return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '40px' }}>
-        <SOSButton
-          size={3}
-          countdownValue={15}
-          sentLabel="Sent"
-        />
-      </div>
-    );
-  },
+  render: () => <SOSButton size={3} countdownValue={15} sentLabel="Sent" />,
 };

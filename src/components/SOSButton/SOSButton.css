@@ -239,6 +239,25 @@
   color: #ffffff;
   box-shadow: 0 6px 0 0 var(--pulse-sos-green-shadow);
   transform: translateY(0);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "Arial Rounded MT Bold", "Segoe UI", Roboto, sans-serif !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  text-align: center !important;
+}
+
+.pulse-sos-button--state-sent.pulse-sos-button--size-1,
+.pulse-sos-button--state-sent.pulse-sos-button--small {
+  font-size: 18px !important;
+}
+
+.pulse-sos-button--state-sent.pulse-sos-button--size-2,
+.pulse-sos-button--state-sent.pulse-sos-button--medium {
+  font-size: 22px !important;
+}
+
+.pulse-sos-button--state-sent.pulse-sos-button--size-3,
+.pulse-sos-button--state-sent.pulse-sos-button--large {
+  font-size: 28px !important;
 }
 
 .pulse-sos-button--state-sent:hover:not(:disabled) {
