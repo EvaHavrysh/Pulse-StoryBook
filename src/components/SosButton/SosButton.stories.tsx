@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { SosButton, SosButtonState } from './SosButton';
+import { SosButton } from './SosButton';
+import type { SosButtonState } from './SosButton';
 
 const meta: Meta<typeof SosButton> = {
   title: 'Components/SosButton',
