@@ -1,29 +1,14 @@
-import React, { forwardRef, useRef, useImperativeHandle, useState, useEffect } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
 import './SearchInput.css';
 
 export type SearchInputState = 'default' | 'active' | 'disabled';
 
 export interface SearchInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
-  /**
-   * Visual state of the search input: 'default' | 'active' | 'disabled'.
-   */
   state?: SearchInputState;
-  /**
-   * Placeholder text displayed in default state. Defaults to "Search".
-   */
   placeholder?: string;
-  /**
-   * Current input value.
-   */
   value?: string;
-  /**
-   * Disabled state.
-   */
   disabled?: boolean;
-  /**
-   * Change handler callback.
-   */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -59,9 +44,6 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
     },
     ref
   ) => {
-    const inputRef = useRef<HTMLInputElement>(null);
-    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
-
     const [internalValue, setInternalValue] = useState<string>(controlledValue ?? '');
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
@@ -74,7 +56,6 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
       }
     }, [controlledValue]);
 
-    // Dynamic state switching: switch to 'active' on focus or when text is present
     const effectiveState =
       controlledState !== undefined
         ? controlledState
@@ -99,33 +80,23 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
       onBlur?.(e);
     };
 
-    const handleFrameClick = () => {
-      if (!disabled && effectiveState !== 'disabled') {
-        inputRef.current?.focus();
-      }
-    };
-
     return (
-      <div
-        className={`pulse-search-container pulse-search-container--state-${effectiveState} ${className}`.trim()}
-      >
-        <div className="pulse-search-frame" onClick={handleFrameClick}>
-          <span className="pulse-search-icon">
-            <SearchIcon />
-          </span>
-          <input
-            ref={inputRef}
-            type="text"
-            disabled={disabled || effectiveState === 'disabled'}
-            placeholder={placeholder}
-            value={currentValue}
-            className="pulse-search-control"
-            onChange={handleInputChange}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            {...props}
-          />
-        </div>
+      <div className={`search-container ${effectiveState} ${className}`.trim()}>
+        <span className="search-icon">
+          <SearchIcon />
+        </span>
+        <input
+          ref={ref}
+          type="text"
+          disabled={disabled}
+          placeholder={placeholder}
+          value={currentValue}
+          className="search-input"
+          onChange={handleInputChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          {...props}
+        />
       </div>
     );
   }

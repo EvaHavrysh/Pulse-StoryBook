@@ -1,107 +1,70 @@
-/* Search Component Styles - Absolute Ban on Stray Right-Side Lines */
-.pulse-search-container {
+/* Search Component Styles - User Direct Specification */
+.search-container {
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 420px;
+  max-width: 400px;
+  height: 52px;
+  padding: 0 16px;
+  border-radius: 16px;
   box-sizing: border-box;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
 }
 
-.pulse-search-frame {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  height: 52px;
-  padding: 0 20px;
-  background-color: #ffffff;
-  border-radius: 9999px;
-  border: 2px solid #5a5a5a;
-  box-sizing: border-box;
-  transition: border-color 0.15s ease;
-  cursor: text;
-  position: relative;
-  overflow: hidden;
+/* Дефолтное состояние */
+.search-container.default,
+.search-container:not(.active):not(:focus-within) {
+  border: 1.5px solid #666666;
 }
 
-/* Default state: dark grey border */
-.pulse-search-container--state-default .pulse-search-frame {
-  border-color: #5a5a5a;
+/* Активное состояние (или при фокусе/нажатии) */
+.search-container.active,
+.search-container:focus-within {
+  border: 1.5px solid #cccccc;
 }
 
-/* Active state or Focus state: lighter grey border */
-.pulse-search-container--state-active .pulse-search-frame,
-.pulse-search-frame:focus-within {
-  border-color: #d1d5db;
-}
-
-/* Disabled state */
-.pulse-search-container--state-disabled .pulse-search-frame {
-  border-color: #e5e7eb;
-  background-color: #f9fafb;
-  cursor: not-allowed;
-}
-
-/* Magnifying Glass Search Icon */
-.pulse-search-icon {
+.search-icon {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #111111;
   margin-right: 12px;
-  color: #1a1a1a;
   flex-shrink: 0;
-  pointer-events: none;
 }
 
-.pulse-search-icon svg {
+.search-icon svg {
   width: 20px;
   height: 20px;
-  stroke: #1a1a1a;
+  stroke: #111111;
   stroke-width: 2.2;
 }
 
-/* Native HTML Input Control */
-.pulse-search-control {
-  flex: 1;
+/* Нативный инпут, который убирает весь визуальный мусор и кастомные палки */
+.search-input {
   width: 100%;
-  height: 100%;
-  border: none !important;
-  outline: none !important;
-  outline-offset: 0 !important;
-  box-shadow: none !important;
-  background: transparent !important;
+  border: none;
+  outline: none;
+  background: transparent;
   font-family: inherit;
-  font-size: 17px;
-  font-weight: 400;
-  color: #1a1a1a;
-  padding: 0 !important;
-  margin: 0 !important;
-  text-align: left;
-  /* Hide text caret when not focused to ensure 100% clean static views */
-  caret-color: transparent;
-  -webkit-appearance: none;
-  appearance: none;
+  font-size: 16px;
+  color: #111111;
+  padding: 0;
+  margin: 0;
 }
 
-/* Show native caret only when actively focused */
-.pulse-search-control:focus {
-  caret-color: #1a1a1a;
+.search-input::placeholder {
+  color: #111111;
+  opacity: 1;
 }
 
-/* Hide native search clear buttons and webkit controls */
-.pulse-search-control::-webkit-search-decoration,
-.pulse-search-control::-webkit-search-cancel-button,
-.pulse-search-control::-webkit-search-results-button,
-.pulse-search-control::-webkit-search-results-decoration,
-.pulse-search-control::-ms-clear,
-.pulse-search-control::-ms-reveal {
+/* Clear WebKit/MS native search cancel buttons */
+.search-input::-webkit-search-decoration,
+.search-input::-webkit-search-cancel-button,
+.search-input::-webkit-search-results-button,
+.search-input::-webkit-search-results-decoration,
+.search-input::-ms-clear,
+.search-input::-ms-reveal {
   display: none !important;
-  -webkit-appearance: none !important;
-}
-
-.pulse-search-control::placeholder {
-  color: #1a1a1a;
-  opacity: 0.95;
-  font-weight: 400;
 }
