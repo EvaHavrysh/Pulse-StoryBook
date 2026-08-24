@@ -241,7 +241,12 @@ export const SOSButton = forwardRef<HTMLButtonElement, SOSButtonProps>(
       >
         {effectiveState === 'countdown' && <RadarPulseWaves />}
         {effectiveState === 'countdown' && <CircularProgressRing progress={displayProgress} />}
-        <span className="pulse-sos-button__content">{renderContent()}</span>
+        <span
+          className="pulse-sos-button__content"
+          style={effectiveState === 'sent' ? { fontSize: '24px', fontWeight: 800 } : undefined}
+        >
+          {renderContent()}
+        </span>
       </button>
     );
   }

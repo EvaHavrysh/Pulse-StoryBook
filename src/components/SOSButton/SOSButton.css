@@ -234,13 +234,15 @@
 /* ==================================================== */
 /* 3. GREEN SENT (Solid Green + White Sent)             */
 /* ==================================================== */
-.pulse-sos-button--state-sent {
+.pulse-sos-button--state-sent,
+.pulse-sos-button--state-sent .pulse-sos-button__content {
   background-color: var(--pulse-sos-green-bg);
   color: #ffffff;
   box-shadow: 0 6px 0 0 var(--pulse-sos-green-shadow);
   transform: translateY(0);
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "Arial Rounded MT Bold", "Segoe UI", Roboto, sans-serif !important;
   font-weight: 800 !important;
+  font-size: 24px !important;
   line-height: 1 !important;
   text-align: center !important;
 }
