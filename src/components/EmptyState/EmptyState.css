@@ -7,8 +7,10 @@
   width: 210px;
   height: 256px;
   border-radius: 16px;
-  border: 1.5px dashed #cccccc;
+  border: none;
   background-color: #ffffff;
+  /* Precision 1px SVG dashed border with exact 16px gap spacing */
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='0.5' y='0.5' width='99.5%25' height='99.5%25' fill='none' rx='16' ry='16' stroke='%23cccccc' stroke-width='1' stroke-dasharray='10 16'/%3e%3c/svg%3e");
   padding: 16px;
   box-sizing: border-box;
   text-align: center;
