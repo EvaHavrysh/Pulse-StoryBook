@@ -2,7 +2,6 @@ export * from './Button/Button';
 export * from './SOSButton/SOSButton';
 export * from './Input/TextInput';
 export * from './Input/PhoneInput';
-export * from './Search/SearchInput';
 export * from './Checkbox/Checkbox';
 export * from './Skeleton/Skeleton';
 export * from './Switch/Switch';
