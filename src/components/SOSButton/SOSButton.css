@@ -247,17 +247,17 @@
 
 .pulse-sos-button--state-sent.pulse-sos-button--size-1,
 .pulse-sos-button--state-sent.pulse-sos-button--small {
-  font-size: 18px !important;
+  font-size: 15px !important;
 }
 
 .pulse-sos-button--state-sent.pulse-sos-button--size-2,
 .pulse-sos-button--state-sent.pulse-sos-button--medium {
-  font-size: 22px !important;
+  font-size: 19px !important;
 }
 
 .pulse-sos-button--state-sent.pulse-sos-button--size-3,
 .pulse-sos-button--state-sent.pulse-sos-button--large {
-  font-size: 28px !important;
+  font-size: 24px !important;
 }
 
 .pulse-sos-button--state-sent:hover:not(:disabled) {
