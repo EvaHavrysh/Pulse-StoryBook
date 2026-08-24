@@ -4,6 +4,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 240px;
+  height: 240px;
 }
 
 .pulse-sos-button {
@@ -25,6 +27,7 @@
   user-select: none !important;
   padding: 0 !important;
   margin: 0 !important;
+  z-index: 2 !important;
 }
 
 /* 1. Default (Red) State */
@@ -70,28 +73,39 @@
 /* 4. Countdown State */
 .pulse-sos-button--countdown {
   background-color: #ffffff !important;
+  border: 3px solid #b80000 !important;
   box-shadow: none !important;
   color: #b80000 !important;
   font-size: 28px !important;
   cursor: default !important;
-  animation: pulse-sos-breathe 1.5s ease-in-out infinite alternate !important;
+  animation: pulse-sos-breathe 1.2s ease-in-out infinite alternate !important;
 }
 
-/* Radar rings effect for active countdown */
-.pulse-sos-radar-ring {
+/* Concentric Radar Waves Animation */
+.pulse-sos-radar-wave {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 2px solid rgba(184, 0, 0, 0.4);
+  background-color: rgba(184, 0, 0, 0.25);
+  border: 2px solid rgba(184, 0, 0, 0.5);
   pointer-events: none;
-  animation: pulse-sos-radar 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  z-index: 1;
+  animation: pulse-sos-radar-ripple 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 
-.pulse-sos-radar-ring--delay {
+.pulse-sos-radar-wave--1 {
+  animation-delay: 0s;
+}
+
+.pulse-sos-radar-wave--2 {
   animation-delay: 0.8s;
+}
+
+.pulse-sos-radar-wave--3 {
+  animation-delay: 1.6s;
 }
 
 @keyframes pulse-sos-breathe {
@@ -99,47 +113,17 @@
     transform: scale(1);
   }
   100% {
-    transform: scale(1.05);
+    transform: scale(1.06);
   }
 }
 
-@keyframes pulse-sos-radar {
+@keyframes pulse-sos-radar-ripple {
   0% {
     transform: scale(1);
     opacity: 0.8;
   }
   100% {
-    transform: scale(1.6);
+    transform: scale(2.4);
     opacity: 0;
   }
-}
-
-/* SVG Progress Ring */
-.pulse-sos-ring-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: rotate(-90deg);
-}
-
-.pulse-sos-ring-bg {
-  stroke: #f2cece;
-  stroke-width: 4;
-}
-
-.pulse-sos-ring-progress {
-  stroke: #b80000;
-  stroke-width: 4;
-  stroke-linecap: round;
-  transition: stroke-dashoffset 0.3s ease;
-}
-
-.pulse-sos-icon {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 28px !important;
-  height: 28px !important;
 }

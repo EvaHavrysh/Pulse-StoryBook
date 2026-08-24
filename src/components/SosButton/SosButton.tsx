@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
 import './SosButton.css';
 
 export type SosButtonState = 'default' | 'countdown' | 'sent' | 'blocked';
@@ -18,9 +18,9 @@ export interface SosButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButt
    */
   countdownSeconds?: number;
   /**
-   * Total maximum seconds for progress ring. Defaults to 15.
+   * Whether to play subtle alarm audio during countdown. Defaults to true.
    */
-  maxSeconds?: number;
+  playAudio?: boolean;
   /**
    * Click event handler.
    */
@@ -54,26 +54,64 @@ export const SosButton = forwardRef<HTMLButtonElement, SosButtonProps>(
       state = 'default',
       contentMode = 'text',
       countdownSeconds = 15,
-      maxSeconds = 15,
+      playAudio = true,
       onClick,
       disabled = false,
       ...props
     },
     ref
   ) => {
-    const radius = 46;
-    const circumference = 2 * Math.PI * radius;
-    const progressOffset =
-      state === 'countdown'
-        ? circumference - (countdownSeconds / maxSeconds) * circumference
-        : 0;
+    const audioIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+    useEffect(() => {
+      if (state === 'countdown' && playAudio) {
+        const playBeep = () => {
+          try {
+            const AudioCtx =
+              window.AudioContext ||
+              (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+            if (!AudioCtx) return;
+            const ctx = new AudioCtx();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(880, ctx.currentTime);
+            gain.gain.setValueAtTime(0.08, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.start();
+            osc.stop(ctx.currentTime + 0.15);
+          } catch {
+            // Gracefully ignore autoplay restrictions
+          }
+        };
+
+        playBeep();
+        audioIntervalRef.current = setInterval(playBeep, 800);
+      } else if (audioIntervalRef.current) {
+        clearInterval(audioIntervalRef.current);
+        audioIntervalRef.current = null;
+      }
+
+      return () => {
+        if (audioIntervalRef.current) {
+          clearInterval(audioIntervalRef.current);
+          audioIntervalRef.current = null;
+        }
+      };
+    }, [state, playAudio]);
 
     return (
       <div className="pulse-sos-wrapper">
         {state === 'countdown' && (
           <>
-            <div className="pulse-sos-radar-ring" />
-            <div className="pulse-sos-radar-ring pulse-sos-radar-ring--delay" />
+            <div className="pulse-sos-radar-wave pulse-sos-radar-wave--1" />
+            <div className="pulse-sos-radar-wave pulse-sos-radar-wave--2" />
+            <div className="pulse-sos-radar-wave pulse-sos-radar-wave--3" />
           </>
         )}
 
@@ -85,24 +123,7 @@ export const SosButton = forwardRef<HTMLButtonElement, SosButtonProps>(
           className={`pulse-sos-button pulse-sos-button--${state} ${className}`.trim()}
           {...props}
         >
-          {state === 'countdown' && (
-            <svg className="pulse-sos-ring-svg" viewBox="0 0 100 100">
-              <circle className="pulse-sos-ring-bg" cx="50" cy="50" r={radius} fill="none" />
-              <circle
-                className="pulse-sos-ring-progress"
-                cx="50"
-                cy="50"
-                r={radius}
-                fill="none"
-                strokeDasharray={circumference}
-                strokeDashoffset={progressOffset}
-              />
-            </svg>
-          )}
-
-          {state === 'default' && (
-            contentMode === 'siren' ? <SirenIcon /> : 'SOS'
-          )}
+          {state === 'default' && (contentMode === 'siren' ? <SirenIcon /> : 'SOS')}
           {state === 'countdown' && countdownSeconds}
           {state === 'sent' && 'Sent'}
           {state === 'blocked' && 'SOS'}

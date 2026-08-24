@@ -19,6 +19,7 @@ const meta: Meta<typeof SosButton> = {
       description: 'Toggle default state view between text ("SOS") and Siren Icon',
     },
     countdownSeconds: { control: 'number' },
+    playAudio: { control: 'boolean' },
     onClick: { action: 'buttonClicked' },
   },
 };
@@ -34,12 +35,12 @@ export const Default: Story = {
   },
 };
 
-// Story 2: Countdown (15s)
+// Story 2: Countdown (15s with radar waves & audio)
 export const Countdown: Story = {
   args: {
     state: 'countdown',
     countdownSeconds: 15,
-    maxSeconds: 15,
+    playAudio: true,
   },
 };
 
@@ -57,7 +58,7 @@ export const Blocked: Story = {
   },
 };
 
-// Story 5: Interactive Demonstration
+// Story 5: Interactive Demonstration (Clean centered view without extra labels)
 export const Interactive = () => {
   const [currentState, setCurrentState] = useState<SosButtonState>('default');
   const [seconds, setSeconds] = useState<number>(15);
@@ -84,18 +85,13 @@ export const Interactive = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '40px' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
       <SosButton
         state={currentState}
         countdownSeconds={seconds}
-        maxSeconds={15}
+        playAudio={true}
         onClick={handleClick}
       />
-      <p style={{ fontFamily: 'sans-serif', fontSize: '14px', color: '#666' }}>
-        {currentState === 'default' && 'Click the SOS button to start the 15s emergency countdown.'}
-        {currentState === 'countdown' && `Emergency signal sending in ${seconds}s... (Clicking does nothing)`}
-        {currentState === 'sent' && 'Emergency signal Sent! Click button again to reset.'}
-      </p>
     </div>
   );
 };
