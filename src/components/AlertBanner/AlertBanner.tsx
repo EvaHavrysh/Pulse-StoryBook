@@ -7,7 +7,7 @@ export interface AlertBannerProps extends React.HTMLAttributes<HTMLDivElement> {
    */
   title?: string;
   /**
-   * Body / description subtext. Defaults to "Severe tornado detected nearby. Take shelter immediately!"
+   * Body / description subtext. Defaults to "Severe tornado detected nearby.\nTake shelter immediately!"
    */
   description?: string;
   /**
@@ -22,28 +22,36 @@ export interface AlertBannerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const TornadoIcon = () => (
   <svg
-    width="44"
-    height="44"
-    viewBox="0 0 48 48"
+    width="48"
+    height="48"
+    viewBox="0 0 56 56"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
   >
     {/* Dark Funnel body */}
     <path
-      d="M10 14C10 14 18 10 24 10C30 10 38 14 38 14C38 14 34 22 28 26C24 28.5 24 32 23 38C22.5 41 21 42 20 42C19 42 19 38 21 33C22.5 29.5 24 26 21 22C17 17 10 14 10 14Z"
-      fill="#2d2d2d"
+      d="M14 18C14 18 22 14 28 14C34 14 42 18 42 18C42 18 38 27 32 32C28 35 27 39 26 46C25.5 49 24 50 23 50C22 50 22 46 24 40C25.5 36 27 32 24 27C20 21 14 18 14 18Z"
+      fill="#444444"
     />
-    {/* Top funnel disk */}
-    <ellipse cx="24" cy="12" rx="14" ry="3.5" fill="#111111" />
-    {/* Horizontal white swirl rings */}
-    <path d="M8 16C12 19.5 36 19.5 40 16" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" />
-    <path d="M12 24C16 27 32 27 36 24" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" />
-    <path d="M16 32C19 34.5 29 34.5 32 32" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" />
-    {/* Flying green leaves */}
-    <path d="M39 19C41 18 43 20 42 22C40 22 38 20 39 19Z" fill="#68d391" />
-    <path d="M7 29C5 28 3 30 4 32C6 32 8 30 7 29Z" fill="#68d391" />
-    <path d="M10 38C12 37 14 39 13 41C11 41 9 39 10 38Z" fill="#68d391" />
+    {/* Top funnel rim */}
+    <ellipse cx="28" cy="16" rx="15" ry="4" fill="#000000" />
+    
+    {/* Swirl rings */}
+    <path d="M12 21C17 24.5 39 24.5 44 21" stroke="#000000" strokeWidth="2.5" strokeLinecap="round" />
+    <path d="M14 21.5C18 24.5 38 24.5 42 21.5" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" />
+    
+    <path d="M16 30C20 33 36 33 40 30" stroke="#000000" strokeWidth="2.5" strokeLinecap="round" />
+    <path d="M17.5 30.5C21 33 35 33 38.5 30.5" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" />
+
+    <path d="M20 39C23 41.5 33 41.5 36 39" stroke="#000000" strokeWidth="2.2" strokeLinecap="round" />
+    <path d="M21 39.5C23.5 41.5 32.5 41.5 35 39.5" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" />
+
+    {/* Floating Green Leaves */}
+    <path d="M44 23C46.5 22 48.5 24.5 47.5 27C45 27 43 24.5 44 23Z" fill="#7cb342" />
+    <path d="M10 34C8 33 6 35.5 7 37.5C9.5 37.5 11 35 10 34Z" fill="#7cb342" />
+    <path d="M13 43C11.5 42 10 44 11 45.5C13 45.5 14.5 43.5 13 43Z" fill="#7cb342" />
+    <path d="M41 33C42.5 32 44 33.5 43.5 35C42 35 40.5 33.5 41 33Z" fill="#7cb342" />
   </svg>
 );
 
@@ -52,7 +60,7 @@ export const AlertBanner = forwardRef<HTMLDivElement, AlertBannerProps>(
     {
       className = '',
       title = 'Tornado Warning 🌪️',
-      description = 'Severe tornado detected nearby. Take shelter immediately!',
+      description = 'Severe tornado detected nearby.\nTake shelter immediately!',
       timestamp = '9:41 AM',
       icon,
       ...props
