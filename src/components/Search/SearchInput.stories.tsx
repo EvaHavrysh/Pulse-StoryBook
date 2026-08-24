@@ -22,10 +22,6 @@ const meta: Meta<typeof SearchInput> = {
       control: 'text',
       description: 'Input value.',
     },
-    showCursor: {
-      control: 'boolean',
-      description: 'Whether to show simulated blinking typing cursor line.',
-    },
     disabled: {
       control: 'boolean',
       description: 'Whether the search input is disabled.',
@@ -37,14 +33,27 @@ export default meta;
 type Story = StoryObj<typeof SearchInput>;
 
 /* ==================================================== */
-/* EXACT 3 STORIES FOR DEDICATED SEARCH CATEGORY       */
+/* EXACT 3 STORIES IN REQUIRED SPEC ORDER               */
 /* ==================================================== */
 
 /**
- * 1. Default: Shows just the static default search input ("Search").
+ * Story 1 (Interactive): A live interactive search input.
+ * Default looks like Default state; clicking/focusing & typing dynamically switches to Active state (lighter grey border).
  */
-export const Default: Story = {
-  name: 'Default',
+export const Interactive: Story = {
+  name: 'Interactive',
+  render: () => (
+    <div style={{ width: '380px' }}>
+      <SearchInput placeholder="Search" />
+    </div>
+  ),
+};
+
+/**
+ * Story 2 (Default State): Static display of default search input ("Search" placeholder, dark grey border).
+ */
+export const DefaultState: Story = {
+  name: 'Default State',
   render: () => (
     <div style={{ width: '380px' }}>
       <SearchInput state="default" placeholder="Search" />
@@ -53,25 +62,13 @@ export const Default: Story = {
 };
 
 /**
- * 2. Active: Shows just the static active search input with text ("News").
+ * Story 3 (Active State): Static display of active search input ("News" with native cursor, lighter grey border).
  */
-export const Active: Story = {
-  name: 'Active',
+export const ActiveState: Story = {
+  name: 'Active State',
   render: () => (
     <div style={{ width: '380px' }}>
-      <SearchInput state="active" value="News" showCursor={true} />
-    </div>
-  ),
-};
-
-/**
- * 3. Interactive: A fully interactive search component where clicking/typing changes its state dynamically.
- */
-export const Interactive: Story = {
-  name: 'Interactive',
-  render: () => (
-    <div style={{ width: '380px' }}>
-      <SearchInput placeholder="Search" />
+      <SearchInput state="active" value="News" autoFocus />
     </div>
   ),
 };

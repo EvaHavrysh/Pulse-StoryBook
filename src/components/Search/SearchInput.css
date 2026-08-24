@@ -1,4 +1,4 @@
-/* Search Input Component Styles - Top-Level Search Category */
+/* Search Component Styles - Clean Figma Spec */
 .pulse-search-container {
   display: flex;
   align-items: center;
@@ -19,7 +19,7 @@
   border-radius: 9999px;
   border: 2px solid #5a5a5a;
   box-sizing: border-box;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease;
   position: relative;
 }
 
@@ -28,7 +28,7 @@
   border-color: #5a5a5a;
 }
 
-/* Active / Focus state: lighter grey border */
+/* Active / Focused state: lighter grey border */
 .pulse-search-container--state-active .pulse-search-frame,
 .pulse-search-frame:focus-within {
   border-color: #d1d5db;
@@ -47,26 +47,18 @@
   align-items: center;
   justify-content: center;
   margin-right: 14px;
-  color: #111827;
+  color: #1a1a1a;
   flex-shrink: 0;
 }
 
 .pulse-search-icon svg {
   width: 20px;
   height: 20px;
-  stroke: #111827;
+  stroke: #1a1a1a;
   stroke-width: 2.2;
 }
 
-/* Input Control */
-.pulse-search-input-wrapper {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
+/* Native HTML Input Control */
 .pulse-search-control {
   width: 100%;
   height: 100%;
@@ -76,34 +68,14 @@
   font-family: inherit;
   font-size: 17px;
   font-weight: 400;
-  color: #111827;
+  color: #1a1a1a;
   padding: 0;
   margin: 0;
+  caret-color: #000000;
 }
 
 .pulse-search-control::placeholder {
-  color: #111827;
+  color: #1a1a1a;
   opacity: 0.95;
   font-weight: 400;
-}
-
-/* Blinking Typing Cursor Line */
-.pulse-search-cursor {
-  display: inline-block;
-  width: 2px;
-  height: 20px;
-  background-color: #111827;
-  margin-left: 1px;
-  animation: pulse-search-cursor-blink 1.0s step-start infinite;
-  vertical-align: middle;
-  flex-shrink: 0;
-}
-
-@keyframes pulse-search-cursor-blink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
 }

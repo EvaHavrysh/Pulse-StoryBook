@@ -10,17 +10,13 @@ export interface SearchInputProps
    */
   state?: SearchInputState;
   /**
-   * Placeholder text displayed in default empty state. Defaults to "Search".
+   * Placeholder text displayed in default state. Defaults to "Search".
    */
   placeholder?: string;
   /**
    * Current input value.
    */
   value?: string;
-  /**
-   * Whether to display the simulated blinking typing cursor line.
-   */
-  showCursor?: boolean;
   /**
    * Disabled state.
    */
@@ -55,7 +51,6 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
       state: controlledState,
       placeholder = 'Search',
       value: controlledValue,
-      showCursor,
       disabled = false,
       onChange,
       onFocus,
@@ -76,17 +71,13 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
       }
     }, [controlledValue]);
 
+    // Dynamic state switching: switch to 'active' on focus or when text is present
     const effectiveState =
       controlledState !== undefined
         ? controlledState
         : isFocused || currentValue.length > 0
         ? 'active'
         : 'default';
-
-    const shouldShowCursor =
-      showCursor !== undefined
-        ? showCursor
-        : isFocused || (effectiveState === 'active' && currentValue.length > 0);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (!isControlled) {
@@ -113,21 +104,18 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
           <span className="pulse-search-icon">
             <SearchIcon />
           </span>
-          <div className="pulse-search-input-wrapper">
-            <input
-              ref={ref}
-              type="text"
-              disabled={disabled || effectiveState === 'disabled'}
-              placeholder={placeholder}
-              value={currentValue}
-              className="pulse-search-control"
-              onChange={handleInputChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              {...props}
-            />
-            {shouldShowCursor && <span className="pulse-search-cursor" aria-hidden="true" />}
-          </div>
+          <input
+            ref={ref}
+            type="text"
+            disabled={disabled || effectiveState === 'disabled'}
+            placeholder={placeholder}
+            value={currentValue}
+            className="pulse-search-control"
+            onChange={handleInputChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            {...props}
+          />
         </div>
       </div>
     );
