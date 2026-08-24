@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
-import { StatusBadge, StatusBadgeVariant } from '../StatusBadge/StatusBadge';
+import { StatusBadge } from '../StatusBadge/StatusBadge';
+import type { StatusBadgeVariant } from '../StatusBadge/StatusBadge';
 import './StatusContactCard.css';
 
 export interface StatusContactCardProps extends React.HTMLAttributes<HTMLDivElement> {
