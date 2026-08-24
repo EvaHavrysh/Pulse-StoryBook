@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useEffect } from 'react';
+import React, { forwardRef, useRef, useImperativeHandle, useState, useEffect } from 'react';
 import './SearchInput.css';
 
 export type SearchInputState = 'default' | 'active' | 'disabled';
@@ -59,6 +59,9 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
     },
     ref
   ) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
+
     const [internalValue, setInternalValue] = useState<string>(controlledValue ?? '');
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
@@ -96,16 +99,22 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
       onBlur?.(e);
     };
 
+    const handleFrameClick = () => {
+      if (!disabled && effectiveState !== 'disabled') {
+        inputRef.current?.focus();
+      }
+    };
+
     return (
       <div
         className={`pulse-search-container pulse-search-container--state-${effectiveState} ${className}`.trim()}
       >
-        <div className="pulse-search-frame">
+        <div className="pulse-search-frame" onClick={handleFrameClick}>
           <span className="pulse-search-icon">
             <SearchIcon />
           </span>
           <input
-            ref={ref}
+            ref={inputRef}
             type="text"
             disabled={disabled || effectiveState === 'disabled'}
             placeholder={placeholder}

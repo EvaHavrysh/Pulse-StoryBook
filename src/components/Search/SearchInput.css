@@ -1,4 +1,4 @@
-/* Search Component Styles - Clean Spec */
+/* Search Component Styles - Absolute Ban on Stray Right-Side Lines */
 .pulse-search-container {
   display: flex;
   align-items: center;
@@ -11,6 +11,7 @@
 .pulse-search-frame {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   width: 100%;
   height: 52px;
   padding: 0 20px;
@@ -19,6 +20,9 @@
   border: 2px solid #5a5a5a;
   box-sizing: border-box;
   transition: border-color 0.15s ease;
+  cursor: text;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Default state: dark grey border */
@@ -44,9 +48,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 14px;
+  margin-right: 12px;
   color: #1a1a1a;
   flex-shrink: 0;
+  pointer-events: none;
 }
 
 .pulse-search-icon svg {
@@ -58,24 +63,33 @@
 
 /* Native HTML Input Control */
 .pulse-search-control {
-  width: 100%;
   flex: 1;
+  width: 100%;
   height: 100%;
   border: none !important;
   outline: none !important;
+  outline-offset: 0 !important;
   box-shadow: none !important;
-  background: transparent;
+  background: transparent !important;
   font-family: inherit;
   font-size: 17px;
   font-weight: 400;
   color: #1a1a1a;
-  padding: 0;
-  margin: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: left;
+  /* Hide text caret when not focused to ensure 100% clean static views */
+  caret-color: transparent;
   -webkit-appearance: none;
   appearance: none;
 }
 
-/* Hide native search clear buttons */
+/* Show native caret only when actively focused */
+.pulse-search-control:focus {
+  caret-color: #1a1a1a;
+}
+
+/* Hide native search clear buttons and webkit controls */
 .pulse-search-control::-webkit-search-decoration,
 .pulse-search-control::-webkit-search-cancel-button,
 .pulse-search-control::-webkit-search-results-button,
@@ -83,6 +97,7 @@
 .pulse-search-control::-ms-clear,
 .pulse-search-control::-ms-reveal {
   display: none !important;
+  -webkit-appearance: none !important;
 }
 
 .pulse-search-control::placeholder {
