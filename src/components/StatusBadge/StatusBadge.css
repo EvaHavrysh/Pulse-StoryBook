@@ -1,0 +1,50 @@
+/* StatusBadge Component Styles */
+.pulse-status-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 74px !important;
+  height: 22px !important;
+  border-radius: 9999px !important;
+  padding: 0 8px !important;
+  box-sizing: border-box !important;
+  gap: 6px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+/* Variant: Safe */
+.pulse-status-badge--safe {
+  background-color: #e2edd5 !important;
+  border: 1px solid #6fa825 !important;
+  color: #457b0c !important;
+}
+
+.pulse-status-badge--safe .pulse-status-badge__dot {
+  background-color: #6fa825 !important;
+}
+
+/* Variant: Danger */
+.pulse-status-badge--danger {
+  background-color: #fde3e3 !important;
+  border: 1px solid #ea2b2b !important;
+  color: #a30000 !important;
+}
+
+.pulse-status-badge--danger .pulse-status-badge__dot {
+  background-color: #ea2b2b !important;
+}
+
+.pulse-status-badge__dot {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+}
+
+.pulse-status-badge__text {
+  line-height: 1 !important;
+}
