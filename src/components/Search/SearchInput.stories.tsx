@@ -68,7 +68,7 @@ export const ActiveState: Story = {
   name: 'Active State',
   render: () => (
     <div style={{ width: '380px' }}>
-      <SearchInput state="active" value="News" autoFocus />
+      <SearchInput state="active" value="News" />
     </div>
   ),
 };

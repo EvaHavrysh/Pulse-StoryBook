@@ -61,10 +61,12 @@
 /* Native HTML Input Control */
 .pulse-search-control {
   width: 100%;
+  flex: 1;
   height: 100%;
-  border: none;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   background: transparent;
-  outline: none;
   font-family: inherit;
   font-size: 17px;
   font-weight: 400;
@@ -72,6 +74,20 @@
   padding: 0;
   margin: 0;
   caret-color: #000000;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Disable native browser search clear/cancel buttons and trailing controls */
+.pulse-search-control::-webkit-search-decoration,
+.pulse-search-control::-webkit-search-cancel-button,
+.pulse-search-control::-webkit-search-results-button,
+.pulse-search-control::-webkit-search-results-decoration,
+.pulse-search-control::-ms-clear,
+.pulse-search-control::-ms-reveal {
+  display: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
 }
 
 .pulse-search-control::placeholder {
