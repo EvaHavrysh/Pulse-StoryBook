@@ -1,0 +1,60 @@
+/* OtpInput Component Styles */
+.pulse-otp-container {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+.pulse-otp-box {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 58px !important;
+  height: 58px !important;
+  border-radius: 16px !important;
+  background-color: #ffffff !important;
+  border: 2px solid #5d5d5d !important;
+  box-sizing: border-box !important;
+  font-size: 24px !important;
+  font-weight: 500 !important;
+  color: #000000 !important;
+  text-align: center !important;
+  outline: none !important;
+  transition: all 0.2s ease-in-out !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Variant 1: Default */
+.pulse-otp-container--default .pulse-otp-box {
+  border-color: #5d5d5d !important;
+}
+
+/* Variant 2: Disabled */
+.pulse-otp-container--disabled .pulse-otp-box {
+  border-color: #e0e0e0 !important;
+  background-color: #ffffff !important;
+  color: #aaaaaa !important;
+  cursor: not-allowed !important;
+}
+
+/* Variant 3: Active */
+.pulse-otp-container--active .pulse-otp-box,
+.pulse-otp-box:focus {
+  border-color: #888888 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Variant 4: Success */
+.pulse-otp-container--success .pulse-otp-box {
+  border-color: #c2e0a7 !important;
+  box-shadow: none !important;
+}
+
+/* Variant 5: Error */
+.pulse-otp-container--error .pulse-otp-box {
+  border-color: #b80000 !important;
+  border-width: 2.5px !important;
+  box-shadow: none !important;
+}

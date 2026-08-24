@@ -8,3 +8,4 @@ export * from './StatusBadge/StatusBadge';
 export * from './StatusContactCard/StatusContactCard';
 export * from './SearchBar/SearchBar';
 export * from './TopNavigationBar/TopNavigationBar';
+export * from './OtpInput/OtpInput';
