@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState, useEffect, useRef } from 'react';
 import './SOSButton.css';
 
 export type SOSButtonState = 'default' | 'countdown' | 'sent' | 'offline' | 'icon';
@@ -7,16 +7,34 @@ export type SOSButtonSize = 'small' | 'medium' | 'large' | 1 | 2 | 3;
 export interface SOSButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Visual state variation: 'default' | 'countdown' | 'sent' | 'offline' | 'icon'.
+   * If omitted, the button manages state internally upon click.
    */
   state?: SOSButtonState;
   /**
-   * Countdown number to display when state is 'countdown'. Defaults to 5.
+   * Starting countdown number to display when state is 'countdown'. Defaults to 15.
    */
   countdownValue?: number;
   /**
-   * Progress percentage (0 - 100) for the countdown ring. Defaults to 75.
+   * Progress percentage (0 - 100) for the countdown ring.
+   * If omitted, automatically calculated based on remaining countdown time.
    */
   progress?: number;
+  /**
+   * Whether the countdown should automatically tick down using setTimeout. Defaults to true.
+   */
+  autoCountdown?: boolean;
+  /**
+   * Label text displayed when in 'sent' state. Defaults to 'Sent'.
+   */
+  sentLabel?: string;
+  /**
+   * Callback fired when the countdown reaches 0.
+   */
+  onCountdownComplete?: () => void;
+  /**
+   * Callback fired when internal state changes.
+   */
+  onStateChange?: (newState: SOSButtonState) => void;
   /**
    * Button size option: 'small' | 'medium' | 'large' or 1 | 2 | 3.
    */
@@ -51,7 +69,15 @@ const SirenIcon = () => (
   </svg>
 );
 
-const CircularProgressRing = ({ progress = 75 }: { progress?: number }) => {
+const RadarPulseWaves = () => (
+  <div className="pulse-sos-button__radar" aria-hidden="true">
+    <span className="pulse-sos-button__radar-ring pulse-sos-button__radar-ring--1" />
+    <span className="pulse-sos-button__radar-ring pulse-sos-button__radar-ring--2" />
+    <span className="pulse-sos-button__radar-ring pulse-sos-button__radar-ring--3" />
+  </div>
+);
+
+const CircularProgressRing = ({ progress = 100 }: { progress?: number }) => {
   const strokeWidth = 4;
   const size = 100;
   const center = size / 2;
@@ -86,6 +112,7 @@ const CircularProgressRing = ({ progress = 75 }: { progress?: number }) => {
         strokeDashoffset={strokeDashoffset}
         strokeLinecap="round"
         transform={`rotate(-90 ${center} ${center})`}
+        style={{ transition: 'stroke-dashoffset 0.3s ease-in-out' }}
       />
     </svg>
   );
@@ -95,17 +122,86 @@ export const SOSButton = forwardRef<HTMLButtonElement, SOSButtonProps>(
   (
     {
       className = '',
-      state = 'default',
-      countdownValue = 5,
-      progress = 75,
+      state: controlledState,
+      countdownValue = 15,
+      progress,
+      autoCountdown = true,
+      sentLabel = 'Отправлено',
+      onCountdownComplete,
+      onStateChange,
       size = 3,
       disabled = false,
+      onClick,
       children,
       type = 'button',
       ...props
     },
     ref
   ) => {
+    // Uncontrolled state management fallback when controlledState is omitted
+    const [internalState, setInternalState] = useState<SOSButtonState | null>(null);
+    const effectiveState = controlledState !== undefined ? controlledState : (internalState ?? 'default');
+
+    const [currentCount, setCurrentCount] = useState<number>(countdownValue);
+    const initialCountRef = useRef<number>(countdownValue);
+
+    // Synchronize internal state when entering countdown state or when countdownValue prop updates
+    useEffect(() => {
+      if (effectiveState === 'countdown') {
+        setCurrentCount(countdownValue);
+        initialCountRef.current = countdownValue > 0 ? countdownValue : 15;
+      }
+    }, [effectiveState, countdownValue]);
+
+    // Recursive setTimeout countdown tick
+    useEffect(() => {
+      if (effectiveState !== 'countdown' || !autoCountdown || currentCount <= 0) {
+        return;
+      }
+
+      const timer = setTimeout(() => {
+        setCurrentCount((prev) => {
+          const next = prev - 1;
+          if (next === 0) {
+            onCountdownComplete?.();
+            if (controlledState === undefined) {
+              setInternalState('sent');
+            }
+            onStateChange?.('sent');
+          }
+          return next;
+        });
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }, [effectiveState, autoCountdown, currentCount, onCountdownComplete, onStateChange, controlledState]);
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (disabled) return;
+
+      // Uncontrolled state interaction sequence
+      if (controlledState === undefined) {
+        if (effectiveState === 'default' || effectiveState === 'icon') {
+          setInternalState('countdown');
+          onStateChange?.('countdown');
+        } else if (effectiveState === 'countdown' || effectiveState === 'sent') {
+          setInternalState('default');
+          onStateChange?.('default');
+        }
+      }
+
+      onClick?.(e);
+    };
+
+    // Calculate ring progress: fallback to calculated percentage based on current count
+    const calculatedProgress =
+      initialCountRef.current > 0
+        ? (currentCount / initialCountRef.current) * 100
+        : 0;
+
+    const displayProgress =
+      progress !== undefined ? progress : Math.max(0, Math.min(100, calculatedProgress));
+
     // Map size parameters to CSS modifier classes
     const sizeClass =
       size === 1 || size === 'small'
@@ -119,11 +215,11 @@ export const SOSButton = forwardRef<HTMLButtonElement, SOSButtonProps>(
         return children;
       }
 
-      switch (state) {
+      switch (effectiveState) {
         case 'countdown':
-          return countdownValue;
+          return autoCountdown ? currentCount : countdownValue;
         case 'sent':
-          return 'Sent';
+          return sentLabel;
         case 'offline':
           return 'SOS';
         case 'icon':
@@ -139,10 +235,12 @@ export const SOSButton = forwardRef<HTMLButtonElement, SOSButtonProps>(
         ref={ref}
         type={type}
         disabled={disabled}
-        className={`pulse-sos-button pulse-sos-button--state-${state} ${sizeClass} ${className}`.trim()}
+        onClick={handleClick}
+        className={`pulse-sos-button pulse-sos-button--state-${effectiveState} ${sizeClass} ${className}`.trim()}
         {...props}
       >
-        {state === 'countdown' && <CircularProgressRing progress={progress} />}
+        {effectiveState === 'countdown' && <RadarPulseWaves />}
+        {effectiveState === 'countdown' && <CircularProgressRing progress={displayProgress} />}
         <span className="pulse-sos-button__content">{renderContent()}</span>
       </button>
     );

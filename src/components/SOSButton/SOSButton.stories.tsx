@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SOSButton } from './SOSButton';
 
@@ -21,11 +22,15 @@ const meta: Meta<typeof SOSButton> = {
     },
     countdownValue: {
       control: 'number',
-      description: 'Countdown value displayed when state is "countdown".',
+      description: 'Countdown starting value displayed when state is "countdown".',
     },
     progress: {
       control: 'number',
       description: 'Progress ring percentage (0-100) for countdown state.',
+    },
+    autoCountdown: {
+      control: 'boolean',
+      description: 'Whether the countdown automatically ticks down using setTimeout.',
     },
     disabled: {
       control: 'boolean',
@@ -68,9 +73,9 @@ export const AllStatesShowcase: Story = {
           <SOSButton state="default" size={3} />
         </div>
 
-        {/* 2. Countdown Ring (White with "5") */}
+        {/* 2. Countdown Ring (White with 15s to 0s countdown) */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-          <SOSButton state="countdown" countdownValue={5} progress={75} size={3} />
+          <SOSButton state="countdown" countdownValue={15} autoCountdown={true} size={3} />
         </div>
 
         {/* 3. Sent / Success (Green "Sent") */}
@@ -104,19 +109,20 @@ export const DefaultState: Story = {
 };
 
 export const CountdownState: Story = {
-  name: '2. Countdown Ring ("5")',
+  name: '2. Countdown Ring (15 to 0s)',
   args: {
     state: 'countdown',
-    countdownValue: 5,
-    progress: 75,
+    countdownValue: 15,
+    autoCountdown: true,
     size: 3,
   },
 };
 
 export const SentState: Story = {
-  name: '3. Green "Sent"',
+  name: '3. Green "Отправлено"',
   args: {
     state: 'sent',
+    sentLabel: 'Отправлено',
     size: 3,
   },
 };
@@ -134,5 +140,34 @@ export const IconState: Story = {
   args: {
     state: 'icon',
     size: 3,
+  },
+};
+
+export const InteractiveSOSFlow: Story = {
+  name: '6. Interactive SOS Flow (15s Countdown + Radar Pulse)',
+  render: function InteractiveStory() {
+    const [statusText, setStatusText] = useState('Нажмите кнопку SOS для запуска 15-секундного отсчета');
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px', padding: '36px', fontFamily: 'sans-serif' }}>
+        <SOSButton
+          size={3}
+          countdownValue={15}
+          sentLabel="Отправлено"
+          onStateChange={(state) => {
+            if (state === 'countdown') {
+              setStatusText('Отсчет пошел (15с → 0с)... Идет радарный пульс. Нажмите повторно для отмены.');
+            } else if (state === 'sent') {
+              setStatusText('Сигнал SOS успешно отправлен! ("Отправлено")');
+            } else if (state === 'default') {
+              setStatusText('Отсчет отменен. Нажмите SOS для повторного запуска.');
+            }
+          }}
+        />
+        <div style={{ fontSize: '14px', color: '#444', textAlign: 'center', maxWidth: '340px', lineHeight: 1.4 }}>
+          {statusText}
+        </div>
+      </div>
+    );
   },
 };
