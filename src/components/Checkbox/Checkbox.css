@@ -1,0 +1,53 @@
+/* Checkbox Component Styles */
+.pulse-checkbox-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  color: #111111;
+}
+
+.pulse-checkbox-container--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pulse-checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  box-sizing: border-box;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #ffffff;
+  border: 3px solid #555555;
+}
+
+/* Filled States (Green background with white icon) */
+.pulse-checkbox--checked,
+.pulse-checkbox--minus,
+.pulse-checkbox--indeterminate,
+.pulse-checkbox--plus {
+  background-color: #59a700;
+  border-color: #59a700;
+  color: #ffffff;
+}
+
+/* Active Hover Effect */
+.pulse-checkbox-container:hover:not(.pulse-checkbox-container--disabled) .pulse-checkbox--unchecked {
+  border-color: #333333;
+}
+
+.pulse-checkbox__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
