@@ -28,8 +28,9 @@
   border-color: #5a5a5a;
 }
 
-/* Active state: lighter grey border */
-.pulse-search-container--state-active .pulse-search-frame {
+/* Active / Focus state: lighter grey border */
+.pulse-search-container--state-active .pulse-search-frame,
+.pulse-search-frame:focus-within {
   border-color: #d1d5db;
 }
 
@@ -38,11 +39,6 @@
   border-color: #e5e7eb;
   background-color: #f9fafb;
   cursor: not-allowed;
-}
-
-/* Focus state */
-.pulse-search-frame:focus-within {
-  border-color: #5a5a5a;
 }
 
 /* Magnifying Glass Search Icon */

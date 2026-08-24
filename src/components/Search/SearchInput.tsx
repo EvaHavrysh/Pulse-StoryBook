@@ -86,7 +86,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
     const shouldShowCursor =
       showCursor !== undefined
         ? showCursor
-        : effectiveState === 'active' && currentValue.length > 0;
+        : isFocused || (effectiveState === 'active' && currentValue.length > 0);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (!isControlled) {
