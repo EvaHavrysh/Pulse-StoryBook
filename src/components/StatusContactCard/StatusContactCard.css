@@ -1,0 +1,55 @@
+/* StatusContactCard Component Styles */
+.pulse-status-contact-card {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  width: 310px !important;
+  height: 107px !important;
+  border-radius: 18px !important;
+  border: 1px solid #d1d5db !important;
+  background-color: #ffffff !important;
+  padding: 16px 18px !important;
+  box-sizing: border-box !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  overflow: hidden !important;
+}
+
+.pulse-status-contact-card__top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+.pulse-status-contact-card__user {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.pulse-status-contact-card__avatar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background-color: #e2edd5 !important;
+  color: #3b6b0b !important;
+  flex-shrink: 0 !important;
+}
+
+.pulse-status-contact-card__name {
+  margin: 0 !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  line-height: 1.2 !important;
+}
+
+.pulse-status-contact-card__timestamp {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  color: #666666 !important;
+  margin: 0 !important;
+}
