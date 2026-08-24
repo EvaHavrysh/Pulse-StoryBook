@@ -1,0 +1,145 @@
+/* SosButton Component Styles */
+.pulse-sos-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pulse-sos-button {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50% !important;
+  border: none !important;
+  cursor: pointer !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.2s ease !important;
+  user-select: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* 1. Default (Red) State */
+.pulse-sos-button--default {
+  background-color: #b80000 !important;
+  box-shadow: 0 7px 0 #7a0000 !important;
+  font-size: 28px !important;
+}
+
+.pulse-sos-button--default:hover {
+  background-color: #c70000 !important;
+}
+
+.pulse-sos-button--default:active {
+  transform: translateY(5px) !important;
+  box-shadow: 0 2px 0 #7a0000 !important;
+}
+
+/* 2. Sent (Green) State */
+.pulse-sos-button--sent {
+  background-color: #569e00 !important;
+  box-shadow: 0 7px 0 #386700 !important;
+  font-size: 24px !important;
+}
+
+.pulse-sos-button--sent:active {
+  transform: translateY(5px) !important;
+  box-shadow: 0 2px 0 #386700 !important;
+}
+
+/* 3. Blocked (Amber) State */
+.pulse-sos-button--blocked {
+  background-color: #d99000 !important;
+  box-shadow: 0 7px 0 #946200 !important;
+  font-size: 28px !important;
+}
+
+.pulse-sos-button--blocked:active {
+  transform: translateY(5px) !important;
+  box-shadow: 0 2px 0 #946200 !important;
+}
+
+/* 4. Countdown State */
+.pulse-sos-button--countdown {
+  background-color: #ffffff !important;
+  box-shadow: none !important;
+  color: #b80000 !important;
+  font-size: 28px !important;
+  cursor: default !important;
+  animation: pulse-sos-breathe 1.5s ease-in-out infinite alternate !important;
+}
+
+/* Radar rings effect for active countdown */
+.pulse-sos-radar-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid rgba(184, 0, 0, 0.4);
+  pointer-events: none;
+  animation: pulse-sos-radar 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.pulse-sos-radar-ring--delay {
+  animation-delay: 0.8s;
+}
+
+@keyframes pulse-sos-breathe {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulse-sos-radar {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* SVG Progress Ring */
+.pulse-sos-ring-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.pulse-sos-ring-bg {
+  stroke: #f2cece;
+  stroke-width: 4;
+}
+
+.pulse-sos-ring-progress {
+  stroke: #b80000;
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.pulse-sos-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+}
