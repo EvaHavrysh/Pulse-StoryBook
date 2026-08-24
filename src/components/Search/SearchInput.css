@@ -1,8 +1,7 @@
-/* Search Component Styles - Clean Figma Spec */
+/* Search Component Styles - Clean Spec */
 .pulse-search-container {
   display: flex;
   align-items: center;
-  position: relative;
   width: 100%;
   max-width: 420px;
   box-sizing: border-box;
@@ -20,7 +19,6 @@
   border: 2px solid #5a5a5a;
   box-sizing: border-box;
   transition: border-color 0.15s ease;
-  position: relative;
 }
 
 /* Default state: dark grey border */
@@ -28,7 +26,7 @@
   border-color: #5a5a5a;
 }
 
-/* Active / Focused state: lighter grey border */
+/* Active state or Focus state: lighter grey border */
 .pulse-search-container--state-active .pulse-search-frame,
 .pulse-search-frame:focus-within {
   border-color: #d1d5db;
@@ -73,12 +71,11 @@
   color: #1a1a1a;
   padding: 0;
   margin: 0;
-  caret-color: #000000;
   -webkit-appearance: none;
   appearance: none;
 }
 
-/* Disable native browser search clear/cancel buttons and trailing controls */
+/* Hide native search clear buttons */
 .pulse-search-control::-webkit-search-decoration,
 .pulse-search-control::-webkit-search-cancel-button,
 .pulse-search-control::-webkit-search-results-button,
@@ -86,8 +83,6 @@
 .pulse-search-control::-ms-clear,
 .pulse-search-control::-ms-reveal {
   display: none !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
 }
 
 .pulse-search-control::placeholder {

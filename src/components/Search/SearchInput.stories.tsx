@@ -38,7 +38,7 @@ type Story = StoryObj<typeof SearchInput>;
 
 /**
  * Story 1 (Interactive): A live interactive search input.
- * Default looks like Default state; clicking/focusing & typing dynamically switches to Active state (lighter grey border).
+ * Default state initially ("Search"); clicking/focusing switches dynamically to Active state (lighter grey border).
  */
 export const Interactive: Story = {
   name: 'Interactive',
@@ -62,7 +62,7 @@ export const DefaultState: Story = {
 };
 
 /**
- * Story 3 (Active State): Static display of active search input ("News" with native cursor, lighter grey border).
+ * Story 3 (Active State): Static display of active search input ("News" text, lighter grey border).
  */
 export const ActiveState: Story = {
   name: 'Active State',
