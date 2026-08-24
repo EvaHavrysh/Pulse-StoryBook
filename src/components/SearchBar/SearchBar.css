@@ -1,0 +1,57 @@
+/* SearchBar Component Styles */
+.pulse-search-bar {
+  display: flex !important;
+  align-items: center !important;
+  width: 328px !important;
+  height: 56px !important;
+  border-radius: 16px !important;
+  border: 2px solid #5d5d5d !important;
+  background-color: #ffffff !important;
+  padding: 0 18px !important;
+  box-sizing: border-box !important;
+  gap: 12px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out !important;
+}
+
+/* Default State (Darker Gray Border) */
+.pulse-search-bar--default {
+  border-color: #5d5d5d !important;
+}
+
+/* Active State (Lighter Gray Border) */
+.pulse-search-bar--active,
+.pulse-search-bar:focus-within {
+  border-color: #dcdcdc !important;
+}
+
+.pulse-search-bar__icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  color: #000000 !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.pulse-search-bar__input {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  font-family: inherit !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #000000 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.pulse-search-bar__input::placeholder {
+  color: #000000 !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  opacity: 1 !important;
+}
