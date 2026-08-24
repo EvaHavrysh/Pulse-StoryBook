@@ -126,7 +126,7 @@ export const SOSButton = forwardRef<HTMLButtonElement, SOSButtonProps>(
       countdownValue = 15,
       progress,
       autoCountdown = true,
-      sentLabel = 'Отправлено',
+      sentLabel = 'Sent',
       onCountdownComplete,
       onStateChange,
       size = 3,

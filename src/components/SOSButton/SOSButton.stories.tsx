@@ -119,10 +119,10 @@ export const CountdownState: Story = {
 };
 
 export const SentState: Story = {
-  name: '3. Green "Отправлено"',
+  name: '3. Green "Sent"',
   args: {
     state: 'sent',
-    sentLabel: 'Отправлено',
+    sentLabel: 'Sent',
     size: 3,
   },
 };
@@ -143,28 +143,28 @@ export const IconState: Story = {
   },
 };
 
-export const InteractiveSOSFlow: Story = {
-  name: '6. Interactive SOS Flow (15s Countdown + Radar Pulse)',
-  render: function InteractiveStory() {
-    const [statusText, setStatusText] = useState('Нажмите кнопку SOS для запуска 15-секундного отсчета');
+export const InteractiveCountdown: Story = {
+  name: '6. Interactive Countdown (Active Activation Sequence)',
+  render: function InteractiveCountdownStory() {
+    const [statusText, setStatusText] = useState('Click the SOS button to start the 15-second activation countdown.');
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px', padding: '36px', fontFamily: 'sans-serif' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px', padding: '40px', fontFamily: 'sans-serif' }}>
         <SOSButton
           size={3}
           countdownValue={15}
-          sentLabel="Отправлено"
+          sentLabel="Sent"
           onStateChange={(state) => {
             if (state === 'countdown') {
-              setStatusText('Отсчет пошел (15с → 0с)... Идет радарный пульс. Нажмите повторно для отмены.');
+              setStatusText('Countdown active (15s → 0s). Radar pulse waves active. Click again to cancel.');
             } else if (state === 'sent') {
-              setStatusText('Сигнал SOS успешно отправлен! ("Отправлено")');
+              setStatusText('SOS Signal Sent successfully! ("Sent")');
             } else if (state === 'default') {
-              setStatusText('Отсчет отменен. Нажмите SOS для повторного запуска.');
+              setStatusText('Countdown cancelled. Click SOS to trigger again.');
             }
           }}
         />
-        <div style={{ fontSize: '14px', color: '#444', textAlign: 'center', maxWidth: '340px', lineHeight: 1.4 }}>
+        <div style={{ fontSize: '14px', color: '#555', textAlign: 'center', maxWidth: '360px', lineHeight: 1.5 }}>
           {statusText}
         </div>
       </div>

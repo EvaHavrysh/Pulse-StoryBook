@@ -184,40 +184,37 @@
 .pulse-sos-button--state-countdown {
   background-color: var(--pulse-sos-countdown-bg);
   color: var(--pulse-sos-countdown-text);
-  box-shadow: 0 6px 0 0 var(--pulse-sos-countdown-shadow);
+  box-shadow: none !important;
   transform: translateY(0);
   animation: pulse-sos-processing-beat 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes pulse-sos-processing-beat {
   0%, 100% {
-    transform: scale(1) translateY(0);
+    transform: scale(1);
   }
-  20% {
-    transform: scale(1.03) translateY(-1px);
+  25% {
+    transform: scale(1.04);
   }
-  40% {
-    transform: scale(0.97) translateY(1px);
+  50% {
+    transform: scale(0.96);
   }
-  60% {
-    transform: scale(1.02) translateY(-0.5px);
-  }
-  80% {
-    transform: scale(0.98) translateY(0.5px);
+  75% {
+    transform: scale(1.02);
   }
 }
 
 .pulse-sos-button--state-countdown:hover:not(:disabled) {
   background-color: var(--pulse-sos-countdown-hover-bg);
   color: var(--pulse-sos-countdown-text);
-  box-shadow: 0 6px 0 0 var(--pulse-sos-countdown-shadow);
+  box-shadow: none !important;
 }
 
 .pulse-sos-button--state-countdown:active:not(:disabled) {
   background-color: var(--pulse-sos-countdown-bg);
   color: var(--pulse-sos-countdown-text);
-  box-shadow: 0 0 0 0 var(--pulse-sos-countdown-shadow);
-  transform: translateY(6px);
+  box-shadow: none !important;
+  transform: translateY(0);
   animation: none;
 }
 
