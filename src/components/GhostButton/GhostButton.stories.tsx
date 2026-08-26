@@ -71,14 +71,3 @@ export const WithIconButton: Story = {
   },
 };
 
-// Story 6: All States Overview (Row 3 Grid)
-export const AllStatesOverview = () => (
-  <div style={{ display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap', padding: '30px' }}>
-    <GhostButton label="Button" state="default" />
-    <GhostButton label="Button" state="hover" />
-    <GhostButton label="Button" state="active" />
-    <GhostButton label="Button" state="disabled" />
-    <GhostButton label="Button" iconPosition="left" />
-    <GhostButton label="Button" iconPosition="right" />
-  </div>
-);

@@ -71,14 +71,3 @@ export const WithIconButton: Story = {
   },
 };
 
-// Story 6: All States Overview (Row 2 Grid)
-export const AllStatesOverview = () => (
-  <div style={{ display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap', padding: '30px' }}>
-    <SecondaryButton label="Button" state="default" />
-    <SecondaryButton label="Button" state="hover" />
-    <SecondaryButton label="Button" state="active" />
-    <SecondaryButton label="Button" state="disabled" />
-    <SecondaryButton label="Button" iconPosition="left" />
-    <SecondaryButton label="Button" iconPosition="right" />
-  </div>
-);
