@@ -55,14 +55,14 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
           style={{ width: width || '312px', height: height || '176px', ...style }}
           {...props}
         >
-          <div className="pulse-skeleton__block pulse-skeleton__title" />
-          <div className="pulse-skeleton__block pulse-skeleton__body" />
-          <div className="pulse-skeleton__icons">
-            <div className="pulse-skeleton__block pulse-skeleton__icon pulse-skeleton__icon--square" />
-            <div className="pulse-skeleton__block pulse-skeleton__icon pulse-skeleton__icon--triangle" />
-            <div className="pulse-skeleton__block pulse-skeleton__icon pulse-skeleton__icon--circle" />
+          <div className="pulse-skeleton-card__top">
+            <div className="pulse-skeleton__block pulse-skeleton-card__title" />
+            <div className="pulse-skeleton__block pulse-skeleton-card__icon" />
           </div>
-          <div className="pulse-skeleton__block pulse-skeleton__button" />
+
+          <div className="pulse-skeleton__block pulse-skeleton-card__body" />
+
+          <div className="pulse-skeleton__block pulse-skeleton-card__button" />
         </div>
       );
     }

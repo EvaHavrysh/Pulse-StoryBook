@@ -21,13 +21,13 @@ const meta: Meta<typeof Card> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Story 1: Normal State (Interactive Card with button, warning icons, and text)
+// Story 1: Normal State (Interactive Card with "Flood Watch", warning icon, and full-width "Show on map" button)
 export const NormalState: Story = {
   args: {
     isLoading: false,
-    title: 'Emergency Alert',
-    description: 'High wind advisory in effect. Secure loose objects and stay indoors until conditions improve.',
-    buttonLabel: 'View Details',
+    title: 'Flood Watch',
+    description: 'High water levels expected in British Columbia coastal regions. Move valuable items to upper floors.',
+    buttonLabel: 'Show on map',
   },
 };
 
