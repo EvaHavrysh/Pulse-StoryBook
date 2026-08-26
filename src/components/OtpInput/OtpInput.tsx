@@ -148,7 +148,9 @@ export const OtpInput = forwardRef<HTMLDivElement, OtpInputProps>(
         {digits.map((digit, idx) => (
           <input
             key={idx}
-            ref={(el) => (inputRefs.current[idx] = el)}
+            ref={(el) => {
+              inputRefs.current[idx] = el;
+            }}
             type="text"
             inputMode="numeric"
             maxLength={1}
