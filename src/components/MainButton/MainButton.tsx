@@ -17,6 +17,10 @@ export interface MainButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEl
    * Position of chevron icon ('none' | 'left' | 'right').
    */
   iconPosition?: IconPosition;
+  /**
+   * Stretch button to 100% full width of container without shrinking on active click.
+   */
+  fullWidth?: boolean;
 }
 
 const LeftChevron = () => (
@@ -38,6 +42,7 @@ export const MainButton = forwardRef<HTMLButtonElement, MainButtonProps>(
       label = 'Button',
       state = 'default',
       iconPosition = 'none',
+      fullWidth = false,
       disabled = false,
       ...props
     },
@@ -45,6 +50,7 @@ export const MainButton = forwardRef<HTMLButtonElement, MainButtonProps>(
   ) => {
     const isEffectiveDisabled = disabled || state === 'disabled';
     const hasIcon = iconPosition !== 'none';
+    const isFullWidth = fullWidth || className.includes('pulse-card__button');
 
     return (
       <button
@@ -53,7 +59,7 @@ export const MainButton = forwardRef<HTMLButtonElement, MainButtonProps>(
         disabled={isEffectiveDisabled}
         className={`pulse-main-button ${state !== 'default' ? `pulse-main-button--${state}` : ''} ${
           hasIcon ? 'pulse-main-button--has-icon' : ''
-        } ${className}`.trim()}
+        } ${isFullWidth ? 'pulse-main-button--full-width' : ''} ${className}`.trim()}
         {...props}
       >
         {iconPosition === 'left' && (

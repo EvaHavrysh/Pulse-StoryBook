@@ -28,6 +28,17 @@
   width: 126px !important;
 }
 
+/* Full-width modifier (overrides active 99px shrink so button stays 100% full width) */
+.pulse-main-button--full-width,
+.pulse-main-button--full-width:hover,
+.pulse-main-button--full-width:active,
+.pulse-main-button--full-width:active:not(:disabled):not(.pulse-main-button--disabled),
+.pulse-main-button--full-width.pulse-main-button--active {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+}
+
 /* Hover State */
 .pulse-main-button:hover:not(:disabled):not(.pulse-main-button--disabled):not(.pulse-main-button--active),
 .pulse-main-button--hover {

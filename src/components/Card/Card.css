@@ -44,13 +44,26 @@
 }
 
 .pulse-card__footer {
+  display: flex !important;
   width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* Full-width button inside card */
-.pulse-card__button {
+/* Full-width button inside card (locked to 100% width under all states) */
+.pulse-card__button,
+.pulse-card__button:hover,
+.pulse-card__button:active,
+.pulse-card__button:active:not(:disabled):not(.pulse-main-button--disabled),
+.pulse-card__button.pulse-main-button--active {
   width: 100% !important;
+  min-width: 100% !important;
   max-width: 100% !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.pulse-card__button {
   height: 44px !important;
   border-radius: 14px !important;
   box-shadow: 0 5px 0 #316100 !important;
@@ -60,11 +73,9 @@
   color: #ffffff !important;
 }
 
-/* Active / Pressed state: STAYS FULL WIDTH (does not shrink in width) */
-.pulse-card__button:active:not(:disabled),
+/* Active / Pressed state: STAYS FULL WIDTH (only moves translateY and drops shadow) */
+.pulse-card__button:active:not(:disabled):not(.pulse-main-button--disabled),
 .pulse-card__button.pulse-main-button--active {
-  width: 100% !important;
-  max-width: 100% !important;
   transform: translateY(4px) !important;
   box-shadow: 0 1px 0 #316100 !important;
 }
