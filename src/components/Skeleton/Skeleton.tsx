@@ -1,13 +1,27 @@
 import React, { forwardRef } from 'react';
 import './Skeleton.css';
 
+export type SkeletonVariant =
+  | 'title'
+  | 'description'
+  | 'iconSquare'
+  | 'iconTriangle'
+  | 'iconCircle'
+  | 'button'
+  | 'card';
+
 export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
-   * Width of the skeleton card layout. Defaults to '312px'.
+   * Skeleton element variant. Defaults to 'title'.
+   * Options: 'title' | 'description' | 'iconSquare' | 'iconTriangle' | 'iconCircle' | 'button' | 'card'
+   */
+  variant?: SkeletonVariant;
+  /**
+   * Optional custom width.
    */
   width?: string | number;
   /**
-   * Height of the skeleton card layout. Defaults to '176px'.
+   * Optional custom height.
    */
   height?: string | number;
   /**
@@ -20,8 +34,9 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
   (
     {
       className = '',
-      width = '312px',
-      height = '176px',
+      variant = 'title',
+      width,
+      height,
       animated = true,
       style,
       ...props
@@ -30,31 +45,37 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
   ) => {
     const animatedClass = animated ? 'pulse-skeleton--animated' : '';
 
+    if (variant === 'card') {
+      return (
+        <div
+          ref={ref}
+          aria-busy="true"
+          aria-label="Loading content"
+          className={`pulse-skeleton-card ${animatedClass} ${className}`.trim()}
+          style={{ width: width || '312px', height: height || '176px', ...style }}
+          {...props}
+        >
+          <div className="pulse-skeleton__block pulse-skeleton__title" />
+          <div className="pulse-skeleton__block pulse-skeleton__body" />
+          <div className="pulse-skeleton__icons">
+            <div className="pulse-skeleton__block pulse-skeleton__icon pulse-skeleton__icon--square" />
+            <div className="pulse-skeleton__block pulse-skeleton__icon pulse-skeleton__icon--triangle" />
+            <div className="pulse-skeleton__block pulse-skeleton__icon pulse-skeleton__icon--circle" />
+          </div>
+          <div className="pulse-skeleton__block pulse-skeleton__button" />
+        </div>
+      );
+    }
+
     return (
       <div
         ref={ref}
         aria-busy="true"
-        aria-label="Loading content"
-        className={`pulse-skeleton ${animatedClass} ${className}`.trim()}
+        aria-label="Loading placeholder"
+        className={`pulse-skeleton__block pulse-skeleton--${variant} ${animatedClass} ${className}`.trim()}
         style={{ width, height, ...style }}
         {...props}
-      >
-        {/* Top Header Title Line Placeholder */}
-        <div className="pulse-skeleton__block pulse-skeleton__title" />
-
-        {/* Middle Body/Description Box Placeholder */}
-        <div className="pulse-skeleton__block pulse-skeleton__body" />
-
-        {/* Status/Warning Icons Row Placeholder (Square, Triangle, Circle) */}
-        <div className="pulse-skeleton__icons">
-          <div className="pulse-skeleton__block pulse-skeleton__icon pulse-skeleton__icon--square" />
-          <div className="pulse-skeleton__block pulse-skeleton__icon pulse-skeleton__icon--triangle" />
-          <div className="pulse-skeleton__block pulse-skeleton__icon pulse-skeleton__icon--circle" />
-        </div>
-
-        {/* Bottom Button Pill Placeholder */}
-        <div className="pulse-skeleton__block pulse-skeleton__button" />
-      </div>
+      />
     );
   }
 );
