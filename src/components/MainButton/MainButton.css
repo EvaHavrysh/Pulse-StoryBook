@@ -1,0 +1,64 @@
+/* MainButton Component Styles (Row 1: Main / Primary Solid Green Buttons) */
+.pulse-main-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  width: 101px !important;
+  height: 51px !important;
+  border-radius: 16px !important;
+  border: none !important;
+  background-color: #4f9900 !important;
+  color: #ffffff !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  box-shadow: 0 6px 0 #316100 !important;
+  cursor: pointer !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+  transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease, width 0.1s ease !important;
+  user-select: none !important;
+  padding: 0 12px !important;
+  margin: 0 !important;
+}
+
+/* Icon Button (Columns 5 & 6) */
+.pulse-main-button--has-icon {
+  width: 126px !important;
+}
+
+/* Hover State */
+.pulse-main-button:hover:not(:disabled):not(.pulse-main-button--disabled):not(.pulse-main-button--active),
+.pulse-main-button--hover {
+  background-color: #62b307 !important;
+}
+
+/* Active / Pressed State (Width 99px for standard, 124px for icon button) */
+.pulse-main-button:active:not(:disabled):not(.pulse-main-button--disabled),
+.pulse-main-button--active {
+  width: 99px !important;
+  transform: translateY(4px) !important;
+  box-shadow: 0 2px 0 #316100 !important;
+}
+
+.pulse-main-button--has-icon:active:not(:disabled):not(.pulse-main-button--disabled),
+.pulse-main-button--has-icon.pulse-main-button--active {
+  width: 124px !important;
+}
+
+/* Disabled State */
+.pulse-main-button:disabled,
+.pulse-main-button--disabled {
+  background-color: #c4c4c4 !important;
+  color: #999999 !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.pulse-main-button__icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}

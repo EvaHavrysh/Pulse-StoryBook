@@ -12,4 +12,6 @@ export * from './OtpInput/OtpInput';
 export * from './BottomNavigationBar/BottomNavigationBar';
 export * from './BottomNavigationBarWithSos/BottomNavigationBarWithSos';
 export * from './SosButton/SosButton';
-
+export * from './MainButton/MainButton';
+export * from './SecondaryButton/SecondaryButton';
+export * from './GhostButton/GhostButton';

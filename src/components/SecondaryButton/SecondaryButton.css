@@ -1,0 +1,67 @@
+/* SecondaryButton Component Styles (Row 2: Secondary Outlined White Buttons) */
+.pulse-secondary-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  width: 101px !important;
+  height: 51px !important;
+  border-radius: 16px !important;
+  border: 2px solid #4f9900 !important;
+  background-color: #ffffff !important;
+  color: #4f9900 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  box-shadow: 0 5px 0 #316100 !important;
+  cursor: pointer !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease, width 0.1s ease !important;
+  user-select: none !important;
+  padding: 0 12px !important;
+  margin: 0 !important;
+}
+
+/* Icon Button (Columns 5 & 6) */
+.pulse-secondary-button--has-icon {
+  width: 126px !important;
+}
+
+/* Hover State */
+.pulse-secondary-button:hover:not(:disabled):not(.pulse-secondary-button--disabled):not(.pulse-secondary-button--active),
+.pulse-secondary-button--hover {
+  background-color: #c2e0a3 !important;
+  color: #316100 !important;
+}
+
+/* Active / Pressed State */
+.pulse-secondary-button:active:not(:disabled):not(.pulse-secondary-button--disabled),
+.pulse-secondary-button--active {
+  width: 99px !important;
+  transform: translateY(4px) !important;
+  box-shadow: 0 1px 0 #316100 !important;
+  background-color: #ffffff !important;
+}
+
+.pulse-secondary-button--has-icon:active:not(:disabled):not(.pulse-secondary-button--disabled),
+.pulse-secondary-button--has-icon.pulse-secondary-button--active {
+  width: 124px !important;
+}
+
+/* Disabled State */
+.pulse-secondary-button:disabled,
+.pulse-secondary-button--disabled {
+  background-color: #ffffff !important;
+  border-color: #d8d8d8 !important;
+  color: #c0c0c0 !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.pulse-secondary-button__icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}

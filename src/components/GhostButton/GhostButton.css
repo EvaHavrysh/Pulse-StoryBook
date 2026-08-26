@@ -1,0 +1,64 @@
+/* GhostButton Component Styles (Row 3: Ghost / Flat / Soft Fill Buttons) */
+.pulse-ghost-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  width: 101px !important;
+  height: 51px !important;
+  border-radius: 16px !important;
+  border: none !important;
+  background-color: transparent !important;
+  color: #4f9900 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease, width 0.1s ease !important;
+  user-select: none !important;
+  padding: 0 12px !important;
+  margin: 0 !important;
+}
+
+.pulse-ghost-button--has-icon {
+  width: 126px !important;
+}
+
+/* Hover State */
+.pulse-ghost-button:hover:not(:disabled):not(.pulse-ghost-button--disabled):not(.pulse-ghost-button--active),
+.pulse-ghost-button--hover {
+  background-color: #c2e0a3 !important;
+  color: #316100 !important;
+}
+
+/* Active / Pressed State */
+.pulse-ghost-button:active:not(:disabled):not(.pulse-ghost-button--disabled),
+.pulse-ghost-button--active {
+  width: 99px !important;
+  background-color: #d2e8b8 !important;
+  color: #316100 !important;
+  transform: translateY(2px) !important;
+}
+
+.pulse-ghost-button--has-icon:active:not(:disabled):not(.pulse-ghost-button--disabled),
+.pulse-ghost-button--has-icon.pulse-ghost-button--active {
+  width: 124px !important;
+}
+
+/* Disabled State */
+.pulse-ghost-button:disabled,
+.pulse-ghost-button--disabled {
+  background-color: transparent !important;
+  color: #d0d0d0 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.pulse-ghost-button__icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
