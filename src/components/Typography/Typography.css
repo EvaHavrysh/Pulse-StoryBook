@@ -1,0 +1,91 @@
+.pulse-typography-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
+  max-width: 840px;
+  padding: 40px;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.pulse-typography-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pulse-typography-item__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.pulse-typography-item__sample {
+  margin: 0;
+  color: #000000;
+  font-family: inherit;
+}
+
+/* Individual Typography Level Styles */
+
+/* 1. Large Heading (40px) */
+.pulse-typography--large-heading {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.2px;
+}
+
+/* 2. Heading (32px) */
+.pulse-typography--heading {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+}
+
+/* 3. Sub Heading (18px) */
+.pulse-typography--sub-heading {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+}
+
+/* 4. Notification (16px) */
+.pulse-typography--notification {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* 5. Impact (16px UPPERCASE) */
+.pulse-typography--impact {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 6. Body (14px) */
+.pulse-typography--body {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* 7. Subtext (12px) */
+.pulse-typography--subtext {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #222222;
+}

@@ -19,5 +19,7 @@ export * from './Skeleton/Skeleton';
 export * from './Card/Card';
 export * from './InteractiveMapCard/InteractiveMapCard';
 export * from './ChangeProfilePhoto/ChangeProfilePhoto';
+export * from './Typography/Typography';
+
 
 
