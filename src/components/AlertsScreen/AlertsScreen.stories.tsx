@@ -52,36 +52,3 @@ export const EmptyStateView: Story = {
     height: 680,
   },
 };
-
-export const AllScreensOverview: Story = {
-  name: 'All 3 Screen Variants Overview',
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        gap: '24px',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '20px',
-        backgroundColor: '#fafafa',
-      }}
-    >
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-        <span style={{ fontSize: '13px', fontWeight: 600, color: '#666' }}>Loading State (Tab 1)</span>
-        <AlertsScreen view="loading" width={340} height={640} />
-      </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-        <span style={{ fontSize: '13px', fontWeight: 600, color: '#666' }}>Active Alerts (Tab 2)</span>
-        <AlertsScreen view="active" width={340} height={640} />
-      </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-        <span style={{ fontSize: '13px', fontWeight: 600, color: '#666' }}>Empty State (Tab 3)</span>
-        <AlertsScreen view="empty" width={340} height={640} />
-      </div>
-    </div>
-  ),
-};
