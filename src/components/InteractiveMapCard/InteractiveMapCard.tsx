@@ -91,7 +91,7 @@ export const InteractiveMapCard = forwardRef<HTMLDivElement, InteractiveMapCardP
         doubleClickZoom: interactive,
         boxZoom: interactive,
         keyboard: interactive,
-        attributionControl: true,
+        attributionControl: false,
       });
 
       mapInstanceRef.current = map;

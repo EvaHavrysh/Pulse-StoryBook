@@ -29,16 +29,11 @@
 }
 
 .pulse-map-card .leaflet-control-attribution {
-  font-size: 8px !important;
-  background: rgba(0, 0, 0, 0.4) !important;
-  color: rgba(255, 255, 255, 0.7) !important;
-  padding: 1px 4px !important;
-  border-top-left-radius: 4px;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
-.pulse-map-card .leaflet-control-attribution a {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
 
 .pulse-map-card .leaflet-control-zoom {
   border: none !important;
