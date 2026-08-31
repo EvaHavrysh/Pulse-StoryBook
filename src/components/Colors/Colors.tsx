@@ -64,13 +64,14 @@ export const COLOR_PALETTES: ColorPaletteCategory[] = [
 
 export interface ColorsProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
-   * Filter palette to display a specific category ('primary' | 'secondary' | 'danger' | 'warning' | 'all'). Defaults to 'all'.
+   * Filter palette to display a specific category ('primary' | 'secondary' | 'danger' | 'warning' | 'all'). Defaults to 'primary'.
    */
   category?: 'primary' | 'secondary' | 'danger' | 'warning' | 'all';
 }
 
 export const Colors = forwardRef<HTMLDivElement, ColorsProps>(
-  ({ className = '', category = 'all', ...props }, ref) => {
+  ({ className = '', category = 'primary', ...props }, ref) => {
+
     const activePalettes =
       category === 'all'
         ? COLOR_PALETTES

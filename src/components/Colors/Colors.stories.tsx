@@ -8,7 +8,7 @@ const meta: Meta<typeof Colors> = {
   argTypes: {
     category: {
       control: 'select',
-      options: ['primary', 'secondary', 'danger', 'warning', 'all'],
+      options: ['primary', 'secondary', 'danger', 'warning'],
       description: 'Filter palette group by category',
     },
   },
@@ -45,9 +45,3 @@ export const Warning: Story = {
   },
 };
 
-export const AllPalettes: Story = {
-  name: 'All Palettes',
-  args: {
-    category: 'all',
-  },
-};
