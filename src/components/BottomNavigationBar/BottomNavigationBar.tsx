@@ -13,10 +13,15 @@ export interface BottomNavigationBarProps extends Omit<React.HTMLAttributes<HTML
    */
   defaultActiveTab?: BottomNavTab;
   /**
+   * Optional notification badge count or text (e.g. 10).
+   */
+  notificationBadge?: string | number;
+  /**
    * Callback fired when tab selection changes.
    */
   onTabChange?: (tab: BottomNavTab) => void;
 }
+
 
 const HomeIcon = ({ active }: { active: boolean }) =>
   active ? (
@@ -76,6 +81,7 @@ export const BottomNavigationBar = forwardRef<HTMLDivElement, BottomNavigationBa
       className = '',
       activeTab: controlledTab,
       defaultActiveTab = 'home',
+      notificationBadge,
       onTabChange,
       ...props
     },
@@ -118,8 +124,12 @@ export const BottomNavigationBar = forwardRef<HTMLDivElement, BottomNavigationBa
         >
           <span className="pulse-bottom-bar__icon">
             <BellIcon active={activeTab === 'notifications'} />
+            {notificationBadge !== undefined && notificationBadge !== null && (
+              <span className="pulse-bottom-bar__badge">{notificationBadge}</span>
+            )}
           </span>
         </button>
+
 
         {/* 3. Community */}
         <button
