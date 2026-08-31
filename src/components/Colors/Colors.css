@@ -1,0 +1,93 @@
+.pulse-colors-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 860px;
+  padding: 32px;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  color: #1a1a1a;
+}
+
+/* Category Group Section */
+.pulse-colors-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pulse-colors-group__title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Swatch Bar Container */
+.pulse-colors-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  gap: 0;
+}
+
+/* Individual Swatch Block */
+.pulse-colors-swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 76px;
+  min-width: 72px;
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+  position: relative;
+  user-select: all;
+  box-sizing: border-box;
+  transition: transform 0.15s ease, z-index 0.15s ease;
+}
+
+.pulse-colors-swatch:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.pulse-colors-swatch:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* Standalone Swatch (when not connected in bar) */
+.pulse-colors-swatch--standalone {
+  border-radius: 12px !important;
+  margin-left: 12px;
+  flex: 0 0 76px;
+}
+
+/* Warning Swatch Single Tile */
+.pulse-colors-swatch--single {
+  border-radius: 12px !important;
+  flex: 0 0 96px;
+  height: 76px;
+}
+
+/* Shade Label Inside Swatch */
+.pulse-colors-swatch__label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.pulse-colors-swatch__hex {
+  font-size: 11px;
+  opacity: 0.75;
+  margin-top: 4px;
+  font-family: monospace;
+}
