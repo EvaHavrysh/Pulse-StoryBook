@@ -17,3 +17,5 @@ export * from './SecondaryButton/SecondaryButton';
 export * from './GhostButton/GhostButton';
 export * from './Skeleton/Skeleton';
 export * from './Card/Card';
+export * from './InteractiveMapCard/InteractiveMapCard';
+

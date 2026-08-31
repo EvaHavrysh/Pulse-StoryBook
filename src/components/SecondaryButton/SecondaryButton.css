@@ -17,13 +17,12 @@
   cursor: pointer !important;
   outline: none !important;
   box-sizing: border-box !important;
-  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease, width 0.1s ease !important;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease !important;
   user-select: none !important;
   padding: 0 12px !important;
   margin: 0 !important;
 }
 
-/* Icon Button (Columns 5 & 6) */
 .pulse-secondary-button--has-icon {
   width: 126px !important;
 }
@@ -38,15 +37,9 @@
 /* Active / Pressed State */
 .pulse-secondary-button:active:not(:disabled):not(.pulse-secondary-button--disabled),
 .pulse-secondary-button--active {
-  width: 99px !important;
   transform: translateY(4px) !important;
   box-shadow: 0 1px 0 #316100 !important;
   background-color: #ffffff !important;
-}
-
-.pulse-secondary-button--has-icon:active:not(:disabled):not(.pulse-secondary-button--disabled),
-.pulse-secondary-button--has-icon.pulse-secondary-button--active {
-  width: 124px !important;
 }
 
 /* Disabled State */

@@ -17,7 +17,7 @@
   cursor: pointer !important;
   outline: none !important;
   box-sizing: border-box !important;
-  transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease, width 0.1s ease !important;
+  transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease !important;
   user-select: none !important;
   padding: 0 12px !important;
   margin: 0 !important;
@@ -28,34 +28,17 @@
   width: 126px !important;
 }
 
-/* Full-width modifier (overrides active 99px shrink so button stays 100% full width) */
-.pulse-main-button--full-width,
-.pulse-main-button--full-width:hover,
-.pulse-main-button--full-width:active,
-.pulse-main-button--full-width:active:not(:disabled):not(.pulse-main-button--disabled),
-.pulse-main-button--full-width.pulse-main-button--active {
-  width: 100% !important;
-  min-width: 100% !important;
-  max-width: 100% !important;
-}
-
 /* Hover State */
 .pulse-main-button:hover:not(:disabled):not(.pulse-main-button--disabled):not(.pulse-main-button--active),
 .pulse-main-button--hover {
   background-color: #62b307 !important;
 }
 
-/* Active / Pressed State (Width 99px for standard, 124px for icon button) */
+/* Active / Pressed State (Physical vertical press down effect: translateY(4px) + shadow reduction, NO horizontal width change) */
 .pulse-main-button:active:not(:disabled):not(.pulse-main-button--disabled),
 .pulse-main-button--active {
-  width: 99px !important;
   transform: translateY(4px) !important;
   box-shadow: 0 2px 0 #316100 !important;
-}
-
-.pulse-main-button--has-icon:active:not(:disabled):not(.pulse-main-button--disabled),
-.pulse-main-button--has-icon.pulse-main-button--active {
-  width: 124px !important;
 }
 
 /* Disabled State */
@@ -72,4 +55,16 @@
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+}
+
+/* Full-width modifier for Card or block button contexts */
+.pulse-main-button--full-width,
+.pulse-main-button--full-width:hover,
+.pulse-main-button--full-width:active,
+.pulse-main-button--full-width:active:not(:disabled):not(.pulse-main-button--disabled),
+.pulse-main-button--full-width.pulse-main-button--active {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
 }
