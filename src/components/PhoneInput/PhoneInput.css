@@ -1,0 +1,261 @@
+.pulse-phone-input {
+  position: relative;
+  width: 320px;
+  max-width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* Main Box Container */
+.pulse-phone-input__box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 52px;
+  border: 1.5px solid #8e8e8e;
+  border-radius: 14px;
+  background-color: #ffffff;
+  padding: 0 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, border-radius 0.2s ease;
+}
+
+.pulse-phone-input--open .pulse-phone-input__box {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* Floating Label on Top Border */
+.pulse-phone-input__label {
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  background-color: #ffffff;
+  padding: 0 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a1a;
+  line-height: 1;
+  z-index: 3;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+/* Country Selector Button (Left) */
+.pulse-phone-input__country-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  height: 100%;
+  color: #1a1a1a;
+  outline: none;
+}
+
+.pulse-phone-input__flag-icon {
+  font-size: 20px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pulse-phone-input__chevron {
+  width: 12px;
+  height: 12px;
+  color: #333333;
+  transition: transform 0.2s ease;
+}
+
+.pulse-phone-input--open .pulse-phone-input__chevron {
+  transform: rotate(180deg);
+}
+
+/* Divider Line */
+.pulse-phone-input__divider {
+  width: 1.5px;
+  height: 100%;
+  background-color: #8e8e8e;
+  margin: 0 14px;
+  transition: background-color 0.2s ease;
+}
+
+/* Input Field Area */
+.pulse-phone-input__field-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.pulse-phone-input__field {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a1a1a;
+  font-family: inherit;
+  padding: 0;
+}
+
+.pulse-phone-input__field::placeholder {
+  color: #a0a0a0;
+  font-weight: 400;
+}
+
+/* Variant States */
+
+/* Default State */
+.pulse-phone-input--variant-default .pulse-phone-input__box {
+  border-color: #8e8e8e;
+}
+.pulse-phone-input--variant-default .pulse-phone-input__divider {
+  background-color: #8e8e8e;
+}
+
+/* Active / Focused State */
+.pulse-phone-input--focused .pulse-phone-input__box,
+.pulse-phone-input--variant-active .pulse-phone-input__box {
+  border-color: #1a1a1a;
+}
+.pulse-phone-input--focused .pulse-phone-input__divider,
+.pulse-phone-input--variant-active .pulse-phone-input__divider {
+  background-color: #1a1a1a;
+}
+
+/* Success State */
+.pulse-phone-input--variant-success .pulse-phone-input__box {
+  border-color: #79bf24;
+}
+.pulse-phone-input--variant-success .pulse-phone-input__divider {
+  background-color: #79bf24;
+}
+
+/* Error State */
+.pulse-phone-input--variant-error .pulse-phone-input__box {
+  border-color: #d32f2f;
+}
+.pulse-phone-input--variant-error .pulse-phone-input__divider {
+  background-color: #d32f2f;
+}
+
+/* Disabled State */
+.pulse-phone-input--disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+.pulse-phone-input--disabled .pulse-phone-input__box {
+  border-color: #cccccc;
+  background-color: #fafafa;
+}
+.pulse-phone-input--disabled .pulse-phone-input__label {
+  color: #a0a0a0;
+}
+.pulse-phone-input--disabled .pulse-phone-input__divider {
+  background-color: #cccccc;
+}
+
+/* Dropdown Menu Panel */
+.pulse-phone-input__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #ffffff;
+  border: 1.5px solid #8e8e8e;
+  border-top: none;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+}
+
+/* Search Bar Inside Dropdown */
+.pulse-phone-input__search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #ffffff;
+}
+
+.pulse-phone-input__search-icon {
+  width: 16px;
+  height: 16px;
+  color: #666666;
+  flex-shrink: 0;
+}
+
+.pulse-phone-input__search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: inherit;
+  color: #1a1a1a;
+  background: transparent;
+}
+
+.pulse-phone-input__search-input::placeholder {
+  color: #757575;
+}
+
+/* Scrollable Country List */
+.pulse-phone-input__list {
+  max-height: 220px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: #ffffff;
+}
+
+.pulse-phone-input__list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.pulse-phone-input__list-item:last-child {
+  border-bottom: none;
+}
+
+.pulse-phone-input__list-item:hover,
+.pulse-phone-input__list-item--selected {
+  background-color: #f5f5f5;
+}
+
+.pulse-phone-input__country-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.pulse-phone-input__country-code {
+  font-size: 13px;
+  color: #757575;
+  font-family: monospace;
+}
+
+.pulse-phone-input__no-results {
+  padding: 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #757575;
+}

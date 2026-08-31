@@ -21,6 +21,8 @@ export * from './InteractiveMapCard/InteractiveMapCard';
 export * from './ChangeProfilePhoto/ChangeProfilePhoto';
 export * from './Typography/Typography';
 export * from './Colors/Colors';
+export * from './PhoneInput/PhoneInput';
+
 
 
 
