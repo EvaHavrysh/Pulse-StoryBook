@@ -13,7 +13,11 @@ const meta: Meta<typeof ChangeProfilePhoto> = {
     width: { control: 'text' },
     height: { control: 'text' },
   },
+  parameters: {
+    layout: 'centered',
+  },
 };
+
 
 export default meta;
 type Story = StoryObj<typeof meta>;
