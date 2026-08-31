@@ -1,0 +1,102 @@
+.pulse-text-input {
+  position: relative;
+  width: 320px;
+  max-width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* Main Box Container */
+.pulse-text-input__box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  border: 1.5px solid #8e8e8e;
+  border-radius: 14px;
+  background-color: #ffffff;
+  padding: 0 16px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pulse-text-input--multiline .pulse-text-input__box {
+  min-height: 120px;
+  align-items: flex-start;
+  padding: 14px 16px;
+}
+
+/* Floating Label on Top Border */
+.pulse-text-input__label {
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  background-color: #ffffff;
+  padding: 0 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a1a;
+  line-height: 1;
+  z-index: 3;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+/* Input & Textarea Elements */
+.pulse-text-input__field {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: #1a1a1a;
+  font-family: inherit;
+  padding: 0;
+  margin: 0;
+  line-height: 1.4;
+  resize: none;
+}
+
+.pulse-text-input__field::placeholder {
+  color: #a0a0a0;
+  font-weight: 400;
+}
+
+/* Variant States */
+
+/* Default State */
+.pulse-text-input--variant-default .pulse-text-input__box {
+  border-color: #8e8e8e;
+}
+
+/* Active / Focused State */
+.pulse-text-input--focused .pulse-text-input__box,
+.pulse-text-input--variant-active .pulse-text-input__box {
+  border-color: #1a1a1a;
+}
+
+/* Success State */
+.pulse-text-input--variant-success .pulse-text-input__box {
+  border-color: #79bf24;
+}
+
+/* Error State */
+.pulse-text-input--variant-error .pulse-text-input__box {
+  border-color: #d32f2f;
+}
+
+/* Disabled State */
+.pulse-text-input--disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+.pulse-text-input--disabled .pulse-text-input__box {
+  border-color: #cccccc;
+  background-color: #fafafa;
+}
+.pulse-text-input--disabled .pulse-text-input__label {
+  color: #a0a0a0;
+}
